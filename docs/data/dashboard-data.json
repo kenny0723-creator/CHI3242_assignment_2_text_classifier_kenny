@@ -1,0 +1,3704 @@
+{
+  "metrics": {
+    "dataset": {
+      "train_size": 640,
+      "test_size": 160,
+      "label_order": [
+        "concrete",
+        "abstract"
+      ],
+      "feature_coverage": {
+        "A_CountVectorizer_train": {
+          "rows_with_features": 183,
+          "rows_without_features": 457
+        },
+        "A_CountVectorizer_test": {
+          "rows_with_features": 4,
+          "rows_without_features": 156
+        },
+        "B_Word_TfidfVectorizer_train": {
+          "rows_with_features": 548,
+          "rows_without_features": 92
+        },
+        "B_Word_TfidfVectorizer_test": {
+          "rows_with_features": 7,
+          "rows_without_features": 153
+        },
+        "C_CharNgram_TfidfVectorizer_train": {
+          "rows_with_features": 639,
+          "rows_without_features": 1
+        },
+        "C_CharNgram_TfidfVectorizer_test": {
+          "rows_with_features": 159,
+          "rows_without_features": 1
+        }
+      }
+    },
+    "models": {
+      "A_CountVectorizer": {
+        "accuracy": 0.49375,
+        "confusion_matrix": [
+          [
+            1,
+            79
+          ],
+          [
+            2,
+            78
+          ]
+        ],
+        "confusion_matrix_labels": [
+          "concrete",
+          "abstract"
+        ],
+        "classification_report": {
+          "concrete": {
+            "precision": 0.3333333333333333,
+            "recall": 0.0125,
+            "f1-score": 0.024096385542168676,
+            "support": 80.0
+          },
+          "abstract": {
+            "precision": 0.4968152866242038,
+            "recall": 0.975,
+            "f1-score": 0.6582278481012658,
+            "support": 80.0
+          },
+          "accuracy": 0.49375,
+          "macro avg": {
+            "precision": 0.4150743099787686,
+            "recall": 0.49374999999999997,
+            "f1-score": 0.3411621168217172,
+            "support": 160.0
+          },
+          "weighted avg": {
+            "precision": 0.4150743099787686,
+            "recall": 0.49375,
+            "f1-score": 0.34116211682171727,
+            "support": 160.0
+          }
+        }
+      },
+      "B_Word_TfidfVectorizer": {
+        "accuracy": 0.5125,
+        "confusion_matrix": [
+          [
+            80,
+            0
+          ],
+          [
+            78,
+            2
+          ]
+        ],
+        "confusion_matrix_labels": [
+          "concrete",
+          "abstract"
+        ],
+        "classification_report": {
+          "concrete": {
+            "precision": 0.5063291139240507,
+            "recall": 1.0,
+            "f1-score": 0.6722689075630253,
+            "support": 80.0
+          },
+          "abstract": {
+            "precision": 1.0,
+            "recall": 0.025,
+            "f1-score": 0.04878048780487805,
+            "support": 80.0
+          },
+          "accuracy": 0.5125,
+          "macro avg": {
+            "precision": 0.7531645569620253,
+            "recall": 0.5125,
+            "f1-score": 0.3605246976839517,
+            "support": 160.0
+          },
+          "weighted avg": {
+            "precision": 0.7531645569620253,
+            "recall": 0.5125,
+            "f1-score": 0.3605246976839517,
+            "support": 160.0
+          }
+        }
+      },
+      "C_CharNgram_TfidfVectorizer": {
+        "accuracy": 0.75625,
+        "confusion_matrix": [
+          [
+            58,
+            22
+          ],
+          [
+            17,
+            63
+          ]
+        ],
+        "confusion_matrix_labels": [
+          "concrete",
+          "abstract"
+        ],
+        "classification_report": {
+          "concrete": {
+            "precision": 0.7733333333333333,
+            "recall": 0.725,
+            "f1-score": 0.7483870967741936,
+            "support": 80.0
+          },
+          "abstract": {
+            "precision": 0.7411764705882353,
+            "recall": 0.7875,
+            "f1-score": 0.7636363636363637,
+            "support": 80.0
+          },
+          "accuracy": 0.75625,
+          "macro avg": {
+            "precision": 0.7572549019607844,
+            "recall": 0.75625,
+            "f1-score": 0.7560117302052787,
+            "support": 160.0
+          },
+          "weighted avg": {
+            "precision": 0.7572549019607843,
+            "recall": 0.75625,
+            "f1-score": 0.7560117302052787,
+            "support": 160.0
+          }
+        }
+      }
+    },
+    "selection": "C_CharNgram_TfidfVectorizer",
+    "model_settings": {
+      "A_CountVectorizer": {
+        "vectorizer": "CountVectorizer",
+        "max_features": 200,
+        "classifier": "LogisticRegression",
+        "max_iter": 1000,
+        "random_state": 42
+      },
+      "B_Word_TfidfVectorizer": {
+        "vectorizer": "TfidfVectorizer",
+        "max_features": 2000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "classifier": "LogisticRegression",
+        "max_iter": 1000,
+        "random_state": 42
+      },
+      "C_CharNgram_TfidfVectorizer": {
+        "vectorizer": "TfidfVectorizer",
+        "analyzer": "char",
+        "ngram_range": [
+          2,
+          5
+        ],
+        "max_features": 10000,
+        "classifier": "LogisticRegression",
+        "max_iter": 1000,
+        "random_state": 42
+      }
+    },
+    "notes": "C 使用字元級 TF-IDF n-gram (2,5)，不依賴中文分詞器；繁體/簡體字形依原文保留。"
+  },
+  "manual": {
+    "sample_size": 203,
+    "reviewed_size": 203,
+    "agreement": 0.8275862068965517,
+    "ai_distribution": {
+      "concrete": 158,
+      "abstract": 45
+    },
+    "human_distribution": {
+      "concrete": 143,
+      "abstract": 60
+    },
+    "disagreement_count": 35,
+    "rows": [
+      {
+        "id": "C01323",
+        "sentence": "”阿Ｑ歪着头说。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00914",
+        "sentence": "那时我是，整整哭了三天，谁都看见；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01913",
+        "sentence": "‘易地则皆然’，思想言论举动丰采都没有什么大区别……便是学生团体新办的许多事业，不是也已经难免出弊病，大半烟消火灭了吗？",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01076",
+        "sentence": "吓，什么都瞒不过我。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "AI判abstract，但「瞒不过我」是具体情境对话"
+      },
+      {
+        "id": "C01974",
+        "sentence": "谁知道初四这一天却破了例，他不到七点钟便回家来。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "AI判abstract，但「七点钟回家」是具体动作"
+      },
+      {
+        "id": "C00458",
+        "sentence": "华大妈候他喘气平静，才轻轻地给他盖上了满幅补丁的夹被。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "AI判abstract，但「盖夹被」是具体动作"
+      },
+      {
+        "id": "C00829",
+        "sentence": "所以伊又用劲说：“这真是一代不如一代！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00099",
+        "sentence": "老头子坐着，闭了眼睛，摸了好一会，待了好一会；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00493",
+        "sentence": "”康大叔见众人都耸起耳朵听他讲，便格外高兴，横肉块块饱绽，越发大声说，“这小东西不要命，不要就是了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00147",
+        "sentence": "我诅咒吃人的人，先从他起头；",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「诅咒吃人的人」是象征/概念，非具体动作"
+      },
+      {
+        "id": "C01762",
+        "sentence": "他似乎从来没有经验过这样的无聊。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C02138",
+        "sentence": "伊终于出来取了锄子，一路掘下去，虽然疑心，却也希望着意外地见了小白兔的，但是待到底，却只见一堆烂草夹些兔毛，怕还是临蓐时候所铺的吧，此外是冷清清的，全没有什么雪白的小兔的踪迹，以及它那只一探头未出洞外的弟弟了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02242",
+        "sentence": "我买了一张票，本是对于劝募人聊以塞责的，然而似乎又有好事家乘机对我说了些叫天不可不看的大法要了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00973",
+        "sentence": "渐近故乡时，天气又阴晦了，冷风吹进船舱中，呜呜地响，从篷隙向外一望，苍黄的天底下，远近横着几个萧索的荒村，没有一些活气。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00122",
+        "sentence": "又一回偶然议论起一个不好的人，他便说不但该杀，还当“食肉寝皮”。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「食肉寝皮」是成语象征，非具体描写"
+      },
+      {
+        "id": "C01060",
+        "sentence": "幸而我的母亲也就进来，从旁说：\n\n“他多年出门，统忘却了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01455",
+        "sentence": "他记得破夹袄还在，便披在身上，躺倒了，待睁开眼睛，原来太阳又已经照在西墙上头了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00344",
+        "sentence": "”掌柜也不再问，仍然慢慢算他的账。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00106",
+        "sentence": "我忍不住，便放声大笑起来，十分快活。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00714",
+        "sentence": "我这时突然感到一种异样的感觉，觉得他满身灰尘的后影，刹时高大了，而且愈走愈大，须仰视才见。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01705",
+        "sentence": "他又退一步想道：\n\n“难道他们还没有知道我已经投降了革命党吗？",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01938",
+        "sentence": "接着便将头转向别一面去了，依据习惯法，这是宣告讨论中止的表示。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00590",
+        "sentence": "”\n\n“他中焦塞着。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00464",
+        "sentence": "”\n\n“没有？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": "短应答，无实质指涉，可保留"
+      },
+      {
+        "id": "C00435",
+        "sentence": "”\n\n“得了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": "短应答，无实质指涉"
+      },
+      {
+        "id": "C01771",
+        "sentence": "他正听，猛然间一个人从对面逃来了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00700",
+        "sentence": "车夫已经让开道，但伊的破棉背心没有上扣，微风吹着，向外展开，所以终于兜着车把。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02061",
+        "sentence": "过了几时，可又觉得太不相像了。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00094",
+        "sentence": "” 其实我岂不知道这老头子是刽子手扮的！",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「岂不知道是刽子手扮的」是心理判断"
+      },
+      {
+        "id": "C00098",
+        "sentence": "伸出两个拳头，看他如何下手。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01870",
+        "sentence": "他一急，两眼发黑，耳朵里的一声，似乎发昏了。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01847",
+        "sentence": "他第二次进了栅栏，倒也并不十分懊恼。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C02219",
+        "sentence": "”\n\n仲密夫人也出来了，报告了小鸭吃完蝌蚪的故事。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00092",
+        "sentence": "大哥说， “今天请何先生来，给你诊一诊。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02249",
+        "sentence": "我同时便机械地拧转身子，用力往外只一挤，觉得背后便已满满的，大约那弹性的胖绅士早在我的空处胖开了他的右半身了。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01989",
+        "sentence": "方玄绰低下头来了，觉得这也无怪其然的，况且自己和金永生本来很疏远。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00959",
+        "sentence": "”\n\n“也没人说。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": "短应答"
+      },
+      {
+        "id": "C00709",
+        "sentence": "”\n\n我想，我眼见你慢慢倒地，怎么会摔坏呢，装腔作势吧了，这真可憎恶。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「想、可憎恶」心理评价主导"
+      },
+      {
+        "id": "C01261",
+        "sentence": "”桩家揭开盒子盖，也是汗流满面地唱。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00372",
+        "sentence": "我到现在终于没有见———大约孔乙己的确死了。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00311",
+        "sentence": "这些字应该记着。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00201",
+        "sentence": "”\n\n当初，他还只是冷笑，随后眼光便凶狠起来，一到说破他们的隐情，那就满脸都变成青色了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00443",
+        "sentence": "”这是驼背五少爷到了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02008",
+        "sentence": "”\n\n“你不是给上海的书铺子做过文章吗？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01830",
+        "sentence": "“我不知道……他们没有来叫我……”\n\n然而老头子使了一个眼色，阿Ｑ便又被抓进栅栏门里了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01880",
+        "sentence": "他的思想仿佛旋风似的在脑里一回旋：《小孤孀上坟》欠堂皇，《龙虎斗》里的“悔不该……”也太乏，还是“手执钢鞭将你打”罢。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「思想仿佛旋风」是心理描写"
+      },
+      {
+        "id": "C01910",
+        "sentence": "他将这“差不多说”最初公表的时候是在北京首善学校的讲堂上，其时大概是提起关于历史上的事情来，于是说到“古今人不相远”，说到各色人等的“性相近”，终于牵扯到学生和官僚身上，大发其议论道：\n\n“现在社会上时髦的都通行骂官僚，而学生骂得尤利害。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「古今人不相远、性相近」是抽象议论"
+      },
+      {
+        "id": "C00417",
+        "sentence": "一只手却撮着一个鲜红的馒头，那红的还是一点一点地往下滴。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01850",
+        "sentence": "于是他睡着了。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "「睡着了」具体动作"
+      },
+      {
+        "id": "C00378",
+        "sentence": "”是一个老女人的声音。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00413",
+        "sentence": "一直散到老栓立着的地方，几乎将他挤倒了。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02298",
+        "sentence": "在这迟疑之中，双喜可又看出底细来了，便又大声地说道，“我写包票！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01642",
+        "sentence": "我手执钢鞭将你打……”\n\n赵府上的两位男人和两个真本家，也正站在大门口论革命。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01422",
+        "sentence": "阿Ｑ奔入舂米场，一个人站着，还觉得指头痛，还记得“忘八蛋”，因为这话是未庄的乡下人从来不用，专是见过官府的阔人用的，所以格外怕，而印象也格外深。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「觉得指头痛、印象深」心理感受为主"
+      },
+      {
+        "id": "C00763",
+        "sentence": "”\n\nＮ两眼望着屋梁，似乎想些事，仍然说：\n\n“谁知道头发的苦轮到我了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01281",
+        "sentence": "说自己是虫豸吧，也还是忽忽不乐：他这回才有些感到失败的苦痛了。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「感到失败的苦痛」心理"
+      },
+      {
+        "id": "C01679",
+        "sentence": "庵和春天时节一样静，白的墙壁和漆黑的门。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01141",
+        "sentence": "”\n\n“回来？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01598",
+        "sentence": "秀才娘子忙一瞥阿Ｑ的脸，看他感动了没有。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01416",
+        "sentence": "砰的一声，头上着了很粗的一下，他急忙回转身去，那秀才便拿了一支大竹杠站在他面前。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00040",
+        "sentence": "这真叫我怕，叫我纳罕而且伤心。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00538",
+        "sentence": "微风起来，吹动她短发，确乎比去年白得多了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01003",
+        "sentence": "我家只有一个忙月（我们这里给人做工的分三种：整年给一定人家做工的叫长年；",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00110",
+        "sentence": "老头子跨出门，走不多远，便低声对大哥说道，“赶紧吃罢！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01290",
+        "sentence": "这在阿Ｑ，或者以为因为他是赵太爷的父亲，而其实也不然。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00026",
+        "sentence": "其中最凶的一个人，张着嘴，对我笑了一笑；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01648",
+        "sentence": "”\n\n“悔不该……”\n\n“阿Ｑ！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00529",
+        "sentence": "”\n\n“疯了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02300",
+        "sentence": "我们又都是识水性的！",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00867",
+        "sentence": "他不但能说出五虎将姓名，甚而至于还知道黄忠表字汉升和马超表字孟起。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01827",
+        "sentence": "“走到哪里去了呢？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01630",
+        "sentence": "殊不料这却使百里闻名的举人老爷又这样怕，于是他未免也有些“神往”了，况且未庄的一群鸟男女的慌张的神情，也使阿Ｑ更快意。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「神往、快意」心理"
+      },
+      {
+        "id": "C00184",
+        "sentence": "后来因为心思不同，有的不吃人了，一味要好，便变了人，变了真的人。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「心思、一味要好、真的人」抽象概念"
+      },
+      {
+        "id": "C01100",
+        "sentence": "”便拖出躲在背后的孩子来，这正是一个廿年前的闰土，只是黄瘦些，颈子上没有银圈罢了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01655",
+        "sentence": "你总比我有钱。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00048",
+        "sentence": "我要咬你几口才出气！",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C02372",
+        "sentence": "大家都说已经吃了点心，又渴睡，不如及早睡的好，各自回去了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00423",
+        "sentence": "一手抓过洋钱，捏一捏，转身去了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01981",
+        "sentence": "……”伊惴惴地问。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「惴惴地问」心理"
+      },
+      {
+        "id": "C01980",
+        "sentence": "”\n\n“亲领？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01374",
+        "sentence": "”\n\n阿Ｑ的耳朵里又听到这句话。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01560",
+        "sentence": "唉，好看好看……”他摇摇头，将唾沫飞在正对面的赵司晨的脸上。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02210",
+        "sentence": "爱罗先珂君说，“这钱也可以归我出的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01659",
+        "sentence": "赵白眼回家，便从腰间扯下搭连来，交给他女人藏在箱底里。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02005",
+        "sentence": "“我想，这模样是闹不下去的，将来总得想点法，做点什么别的事……”伊终于寻到了别的路，说。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「想点法、寻到别的路」抽象打算"
+      },
+      {
+        "id": "C01555",
+        "sentence": "什么假洋鬼子，只要放在城里的十几岁的小乌龟子的手里，也就立刻是“小鬼见阎王”。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01939",
+        "sentence": "待到凄风冷雨这一天，教员们因为向政府去索欠薪，在新华门前烂泥里被国军打得头破血出之后，倒居然也发了一点薪水。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00450",
+        "sentence": "他的母亲端过一碟乌黑的圆东西，轻轻说：\n\n“吃下去吧，———病便好了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00451",
+        "sentence": "”\n\n小栓撮起这黑东西，看了一会，似乎拿着自己的性命一一般，道白心里气说，不白出气的散奇了怪，。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00947",
+        "sentence": "……”\n\n第二日清晨，七斤依旧从鲁镇撑航船进城，傍晚回到鲁镇，又拿着六尺多长的湘妃竹烟管和一个饭碗回村。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00875",
+        "sentence": "赵七爷一路走来，坐着吃饭的人都站起身，拿筷子点着自己的饭碗说：“七爷，请在我们这里用饭！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01079",
+        "sentence": "此后又有近处的本家和亲戚来访问我。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01253",
+        "sentence": "我是虫豸———还不放吗？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00864",
+        "sentence": "赵七爷是邻村茂源酒店的主人，又是这三十里方圆以内的唯一的出色人物兼学问家；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01936",
+        "sentence": "这种东西似乎连人要吃饭，饭要米做，米要钱买这一点粗浅事情都不知道……”\n\n“对啦。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「人要吃饭、米要钱买」是抽象道理"
+      },
+      {
+        "id": "C00917",
+        "sentence": "你这偷汉的小寡妇！",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C02147",
+        "sentence": "所以三太太一有闲空，便捉住母兔，将小兔一个一个轮流地摆在肚子上来喝奶，不准有多少。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01228",
+        "sentence": "”这时阿Ｑ赤着膊，懒洋洋的瘦伶仃的正在他面前，别人也摸不着这话是真心还是讥笑，然而阿Ｑ很喜欢。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02137",
+        "sentence": "这爪痕倘说是大兔的，爪该不会有这样大，伊又疑心到那常在墙上的大黑猫去了，伊于是也就不能不定下发掘的决心了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00052",
+        "sentence": "陈老五赶上前，硬把我拖回家中了。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00564",
+        "sentence": "嘴里自言自语地说，“这是怎么一回事\n\n她们走不上二三十步远，忽听得背后“哑———”地一声大叫，两个人都悚然地回过头，只见那乌鸦张开两翅，一挫身，直向着远处的天空，箭也似的飞去了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02252",
+        "sentence": "但是前几天，我忽在无意之中看到一本日本文的书，可惜忘记了书名和著者，总之是关于中国戏的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01136",
+        "sentence": "来客也不少，有送行的，有拿东西的，有送行兼拿东西的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01755",
+        "sentence": "”洋先生扬起哭丧棒来了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00751",
+        "sentence": "”\n\n“我们还是记起一点得意的事来谈谈吧。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「记起得意的事谈谈」是心理活动"
+      },
+      {
+        "id": "C01418",
+        "sentence": "阿Ｑ两手去抱头，拍得正打在指节上，这可很有一些痛。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00091",
+        "sentence": "”我说“是的”。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00230",
+        "sentence": "我晓得他的沉重是假的，便挣扎出来，出了一身汗。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01339",
+        "sentence": "不料这秃儿却拿着一支黄漆的棍子———就是阿Ｑ所谓哭丧棒———大踏步走了过来。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01612",
+        "sentence": "阿Ｑ也并不讳饰，傲然地说出他的经验来。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01589",
+        "sentence": "”赵太爷不觉失声地说，“哪里会完得这样快呢？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00269",
+        "sentence": "孔乙己是站着喝酒而穿长衫的唯一的人。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00197",
+        "sentence": "他们会吃我，也会吃你，一伙里面，也会自吃。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「吃人」是象征"
+      },
+      {
+        "id": "C01154",
+        "sentence": "我希望他们不再像我，又大家隔膜起来……然而我又不愿意他们因为要一气，都如我的辛苦展转而生活，也不愿意他们都如闰土的辛苦麻木而生活，也不愿意都如别人的辛苦恣睢而生活。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01525",
+        "sentence": "追来的是一匹很肥大的黑狗。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00982",
+        "sentence": "我们多年聚族而居的老屋，已经公同卖给别姓了，交屋的期限，只在本年，所以必须赶在正月初一以前，永别了熟识的老屋，而且远离了熟识的故乡，搬家到我在谋食的异地去。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00103",
+        "sentence": "养肥了，他们是自然可以多吃；",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「养肥了可以多吃」是象征"
+      },
+      {
+        "id": "C02099",
+        "sentence": "这一对白兔，似乎离娘并不久，虽然是异类，也可以看出他们的天真烂漫来。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00175",
+        "sentence": "九\n\n自己想吃人，又怕被别人吃了，都用着疑心极深的眼光，面面相觑……\n\n去了这心思，放心做事走路吃饭睡觉，何等舒服。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「想去这心思」是抽象议论"
+      },
+      {
+        "id": "C01860",
+        "sentence": "阿Ｑ第三次抓出栅栏门的时候，便是举人老爷睡不着的那一夜的明天的上午了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00292",
+        "sentence": "但他在我们店里，品行却比别人都好，就是从不拖欠；",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00619",
+        "sentence": "幸而不远便是家，早看见对门的王九妈在街边坐着，远远地说话：\n\n“单四嫂子，孩子怎了？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02043",
+        "sentence": "”\n\n他忽而举起一只手来，屈指计数着想，十一，十三回，连今年是十六回，竟没有一个考官懂得文章，有眼无珠，也是可怜的事，便不由嘻嘻地失了笑。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01734",
+        "sentence": "赵太爷因此也骤然大阔，远过于他儿子初隽秀才的时候，所以目空一切，见了阿Ｑ，也就很有些不放在眼里了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00859",
+        "sentence": "哭丧着脸，就会长出辫子来吗？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01859",
+        "sentence": "”于是举人老爷在这一夜竟没有睡，但幸而第二天倒也没有辞。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00801",
+        "sentence": "“改革吗，武器在哪里？",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「改革、武器在哪里」是抽象议论"
+      },
+      {
+        "id": "C00415",
+        "sentence": "”一个浑身黑色的人，站在老栓面前，眼光正像两把刀，刺得老栓缩小了一半。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02282",
+        "sentence": "母亲便宽慰伊，说我们鲁镇的戏比小村里的好得多，一年看几回，今天就算了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01258",
+        "sentence": "阿Ｑ以如是等妙法克服怨敌之后，便愉快地跑到酒店里喝几碗酒，又和别人调笑一通，口角一通，又得了胜，愉快地回到土谷祠，放倒头睡着了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01663",
+        "sentence": "他说不出的新鲜而且高兴，烛火像元夜似的闪闪地跳，他的思想也进跳起来了：\n\n“造反？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00810",
+        "sentence": "”\n\n我默默地送他到门口。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00838",
+        "sentence": "从他的祖父到他，三代不捏锄头柄了；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00100",
+        "sentence": "便张开他鬼眼睛说，“不要乱想。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01352",
+        "sentence": "快回去，和尚等着你……”\n\n“你怎么动手动脚……”尼姑一面满脸通红地说，一面赶快走。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01067",
+        "sentence": "然而圆规很不平，显出鄙夷的神色，仿佛嗤笑法国人不知道拿破仑，美国人不知道华盛顿似的，冷笑说：\n\n“忘了？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01209",
+        "sentence": "我虽不知道是真没有，还是没有查，然而也再没有别的方法了。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00740",
+        "sentence": "这样一直到夜———收了旗关门；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00135",
+        "sentence": "他们没有杀人的罪名，又偿了心愿，自然都欢天喜地地发出一种呜呜咽咽的笑声。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00898",
+        "sentence": "不管他家里有些什么人。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00549",
+        "sentence": "再往上仔细看时，却不觉也吃一惊———分明有一圈红白的花，围着那尖圆的坟顶。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01306",
+        "sentence": "老实说，他肯坐下去，简直还是抬举他。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「抬举他」是评价"
+      },
+      {
+        "id": "C01521",
+        "sentence": "”老尼姑指着他的衣兜。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00336",
+        "sentence": "”“怎么样？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01896",
+        "sentence": "从这一天以来，他们便渐渐地都发出了遗老的气味。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00024",
+        "sentence": "还有七八个人，交头接耳地议论我，又怕我看见。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01028",
+        "sentence": "“他不咬人吗？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01360",
+        "sentence": "”远远地听得小尼姑的带哭的声音。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00783",
+        "sentence": "他拿起手杖来说，这便是他们的话，他们都懂！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02101",
+        "sentence": "这种东西，倘到庙会日期自己出去买，每个至多不过两吊钱，而三太太却花了一元，因为是叫小使上店买来的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01262",
+        "sentence": "“天门啦———角回啦———！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02021",
+        "sentence": "会说出这样无教育的……”\n\n这时候，他忽而又记起被金永生支使出来以后的事了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01077",
+        "sentence": "”\n\n我知道无话可说了，便闭了口，默默地站着。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01854",
+        "sentence": "你看，我做革命党还不上二十天，抢案就是十几件，全不破案，我的面子在哪里？",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00707",
+        "sentence": "”\n\n车夫毫不理会———或者并没有听到，———却放下车子，扶那老女人慢慢起来，搀着臂膊立定，问伊说：\n\n“您怎么啦？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01024",
+        "sentence": "走路的人口渴了摘一个瓜吃，我们这里是不算偷的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01839",
+        "sentence": "那人却又指着一处地方叫他画押。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02126",
+        "sentence": "那小的也捡些草叶吃，然而大的似乎不许它，往往夹口地抢去了，而自己并不吃。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00017",
+        "sentence": "今天见了，精神分外爽快。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00385",
+        "sentence": "老栓候他平静下去，才低低地叫道，“小栓……你不要起来……店吗？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00030",
+        "sentence": "眼色也同赵贵翁一样，脸色也都铁青。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01171",
+        "sentence": "“列传”吗，这一篇并非和许多阔人排在“正史”里；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01328",
+        "sentence": "远远地走来了一个人，他的对头又到了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00853",
+        "sentence": "”\n\n“你怎么知道呢？",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00854",
+        "sentence": "”七斤嫂有些着急，赶忙地问。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01480",
+        "sentence": "从先前的阿Ｑ看来，小Ｄ本来是不足齿数的，但他近来挨了饿，又瘦又乏已经不下于小Ｄ，所以便成了势均力敌的现象，四只手拔着两颗头，都弯了腰，在钱家粉墙上映出一个蓝色的虹形，至于半点钟之久了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01406",
+        "sentence": "吴妈，是赵太爷家里唯一的女仆，洗完了碗碟，也就在长凳上坐下了，而且和阿Ｑ谈闲天：\n\n“太太两天没有吃饭哩，因为老爷要买一个小的……”\n\n“女人……吴妈……这小孤孀……”阿Ｑ想。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01256",
+        "sentence": "状元不也是“第一个”吗？",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「状元不也是第一个吗」是抽象议论"
+      },
+      {
+        "id": "C02223",
+        "sentence": "待到四处蛙鸣的时候，小鸭也已经长成，两个白的，两个花的，而且不复咻咻地叫，都是“鸭鸭”的叫了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00846",
+        "sentence": "“一代不如一代！",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「一代不如一代」是评价"
+      },
+      {
+        "id": "C02063",
+        "sentence": "但今天铁的光罩住了陈士成，又软软地来劝他了，他或者偶一迟疑，便给他正经的证明，又加上阴森的催逼，使他不得不又向自己的房里转过眼光去。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「铁的光罩住、阴森催逼」是象征/心理"
+      },
+      {
+        "id": "C00877",
+        "sentence": "七斤们连忙招呼，七爷也微笑着说“请请”，一面细细地研究他们的饭菜。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00088",
+        "sentence": "我大哥引了一个老头子，慢慢走来；",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02181",
+        "sentence": "房里、草间、树上，都有昆虫吟叫，各种声音，成为合奏，很神奇。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02034",
+        "sentence": "他刚到自己的房门口，七个学童便一齐放开喉咙，吱的念起书来。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01362",
+        "sentence": "”阿Ｑ十分得意地笑。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00553",
+        "sentence": "便觉得心里忽然感到一种不足和空虚，不愿意根究。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00357",
+        "sentence": "”孔乙己很颓唐地仰面答道，“这……下回还清吧。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「颓唐」心理"
+      },
+      {
+        "id": "C00207",
+        "sentence": "一种是知道不该吃，可是仍然要吃，又怕别人说破他，所以听了我的话，越发气愤不过，可是抿着嘴冷笑。",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「知道不该吃、气愤」心理议论"
+      },
+      {
+        "id": "C01330",
+        "sentence": "他先前跑上城里去进洋学堂，不知怎么又跑到东洋去了，半年之后他回到家里来，腿也直了，辫子也不见了，他的母亲大哭了十几场，他的老婆跳了三回井。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "混合句偏叙事，具体动作多"
+      },
+      {
+        "id": "C02268",
+        "sentence": "这虾照例是归我吃的。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01192",
+        "sentence": "———你哪里配姓赵！",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00541",
+        "sentence": "忽然见华大妈坐在地上看她，便有些踌躇，惨白的脸上，现出些羞愧的颜色，但终于硬着头皮，走到左边的一座坟前，放下了篮子。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01645",
+        "sentence": "”赵太爷怯怯地迎着低声地叫。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02288",
+        "sentence": "到晚饭时候，外祖母也终于觉察了，并且说我应当不高兴，他们太怠慢，是待客的礼数里从来所没有的。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C01877",
+        "sentence": "他惘惘地向左右看，全跟着马蚁似的人，而在无意中，却在路旁的人丛中发见了一个吴妈。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01470",
+        "sentence": "他留心打听，才知道他们有事都去叫小Ｄｏｎ。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02014",
+        "sentence": "便在这里很大的报馆里，我靠着一个学生在那里做编辑的大情面，一千字也就是这几个钱，即使一早做到夜，能够养活你们吗？",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00969",
+        "sentence": "伊虽然新近裹脚，却还能帮同七斤嫂做事，捧着十八个铜钉的饭碗，在土场上一瘸一拐地往来。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02347",
+        "sentence": "双喜他们却就破口喃喃地骂。",
+        "ai_label": "abstract",
+        "my_label": "concrete",
+        "note": "「破口喃喃地骂」是具体动作"
+      },
+      {
+        "id": "C01609",
+        "sentence": "最先，地保寻上门了，取了他的门幕去，阿Ｑ说是赵太太要看的，而地保也不还，并且要议定每月的孝敬钱。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C02244",
+        "sentence": "我打听得叫天出台是迟的，而第一舞台却是新式构造，用不着争座位，便放了心，延宕到九点钟才出去，谁料照例，人都满了，连立足也难，我只得挤在远处的人丛中看一个老旦在台上唱。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00463",
+        "sentence": "”一个花白胡子的人说。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00093",
+        "sentence": "”我说“可以！",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01479",
+        "sentence": "小Ｄ一手护住了自己的辫根，一手也来拔阿Ｑ的辫子，阿Ｑ便也将空着的一只手护住了自己的辫根。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01722",
+        "sentence": "而阿Ｑ总觉得自己太失意：既然革了命，不应该只是这样的。",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C02337",
+        "sentence": "现在去舀一瓢水来给你喝吧。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00316",
+        "sentence": "……回字有四样写法，你知道吗？",
+        "ai_label": "abstract",
+        "my_label": "abstract",
+        "note": ""
+      },
+      {
+        "id": "C00532",
+        "sentence": "中间歪歪斜斜一条细路，是贪走便道的人，用鞋底造成的，但却成了自然的界限。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01772",
+        "sentence": "阿Ｑ一看见，便赶紧翻身跟着逃。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01690",
+        "sentence": "……”阿Ｑ诧异了。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C00641",
+        "sentence": "这时候，单四嫂子坐在床沿上哭着，宝儿在床上躺着，纺车静静地在地上立着。",
+        "ai_label": "concrete",
+        "my_label": "concrete",
+        "note": ""
+      },
+      {
+        "id": "C01377",
+        "sentence": "“女人，女人！",
+        "ai_label": "concrete",
+        "my_label": "abstract",
+        "note": "「女人，女人！」是心理呼喊"
+      }
+    ]
+  },
+  "test_predictions": [
+    {
+      "id": "C00376",
+      "sentence": "华老栓忽然坐起身，擦着火柴，点上遍身油腻的灯盏，茶馆的两间屋子里，便弥漫了青白的光。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5850103831,
+      "prob_abstract": 0.4149896169
+    },
+    {
+      "id": "C01091",
+      "sentence": "闰土哥———你来了？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3768882471,
+      "prob_abstract": 0.6231117529
+    },
+    {
+      "id": "C02027",
+      "sentence": "他去得本很早，一见榜，便先在这上面寻陈字。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5433378458,
+      "prob_abstract": 0.4566621542
+    },
+    {
+      "id": "C02203",
+      "sentence": "而且有一匹还成了爱罗先珂君在北京所作唯一的小说《小鸡的悲剧》里的主人公。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4508184703,
+      "prob_abstract": 0.5491815297
+    },
+    {
+      "id": "C01005",
+      "sentence": "自己也种地，只在过年过节以及收租时候来给一定的人家做工的称忙月），忙不过来，他便对父亲说，可以叫他的儿子闰土来管祭器的。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4928467609,
+      "prob_abstract": 0.5071532391
+    },
+    {
+      "id": "C01895",
+      "sentence": "其次是赵府，非特秀才因为上城去报官，被不好的革命党剪了辫子，而且又破费了二十千的赏钱，所以全家也号啕了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4486584918,
+      "prob_abstract": 0.5513415082
+    },
+    {
+      "id": "C00190",
+      "sentence": "谁晓得从盘古开辟天地以后，一直吃到易牙的儿子；",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5435209917,
+      "prob_abstract": 0.4564790083
+    },
+    {
+      "id": "C01725",
+      "sentence": "阿Ｑ万料不到他也敢这样做，自己也决不准他这样做！",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4435385426,
+      "prob_abstract": 0.5564614574
+    },
+    {
+      "id": "C00462",
+      "sentence": "———你生病了？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3588555842,
+      "prob_abstract": 0.6411444158
+    },
+    {
+      "id": "C02236",
+      "sentence": "”我回过脸去，原来他也被我带出来了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5796307103,
+      "prob_abstract": 0.4203692897
+    },
+    {
+      "id": "C01179",
+      "sentence": "有一回，他似乎是姓赵，但第二日便模糊了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4056770382,
+      "prob_abstract": 0.5943229618
+    },
+    {
+      "id": "C00031",
+      "sentence": "我想我同小孩子有什么仇，他也这样。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.392145718,
+      "prob_abstract": 0.607854282
+    },
+    {
+      "id": "C01247",
+      "sentence": "但上文说过，阿Ｑ是有见识的，他立刻知道和“犯忌”有点抵触，便不再往底下说。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5177050436,
+      "prob_abstract": 0.4822949564
+    },
+    {
+      "id": "C01698",
+      "sentence": "赵秀才消息灵，一知道革命党已在夜间进城，便将辫子盘在顶上，一早去拜访那历来也不相能的钱洋鬼子。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4713173107,
+      "prob_abstract": 0.5286826893
+    },
+    {
+      "id": "C02007",
+      "sentence": "我‘文不像誊录生，武不像救火兵’，别的做什么？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4783016034,
+      "prob_abstract": 0.5216983966
+    },
+    {
+      "id": "C01501",
+      "sentence": "他求的是什么东西，他自己不知道。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3634682547,
+      "prob_abstract": 0.6365317453
+    },
+    {
+      "id": "C01340",
+      "sentence": "阿Ｑ在这刹那，便知道大约要打了，赶紧抽紧筋骨，耸了肩膀等候着，果然，拍的一声，似乎确凿打在自己头上了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4608598735,
+      "prob_abstract": 0.5391401265
+    },
+    {
+      "id": "C02319",
+      "sentence": "这时船走得更快，不多时，在台上显出人物来，红红绿绿地动，近台的河里一望乌黑的是看戏的人家的船篷。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.540773559,
+      "prob_abstract": 0.459226441
+    },
+    {
+      "id": "C01157",
+      "sentence": "闰土要香炉和烛台的时候，我还暗地里笑他，以为他总是崇拜偶像，什么时候都不忘却。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4488885981,
+      "prob_abstract": 0.5511114019
+    },
+    {
+      "id": "C02017",
+      "sentence": "”\n\n“过了节吗？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.8336529077,
+      "prob_abstract": 0.1663470923
+    },
+    {
+      "id": "C01603",
+      "sentence": "秀才对于阿Ｑ的态度也很不平，于是说，这忘八蛋要提防，或者竟不如吩咐地保，不许他住在未庄。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5603016814,
+      "prob_abstract": 0.4396983186
+    },
+    {
+      "id": "C00562",
+      "sentence": "华大妈不知怎的，似乎卸下了一挑重担，便想到要走，一面劝着说，“我们还是回去吧。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5721207156,
+      "prob_abstract": 0.4278792844
+    },
+    {
+      "id": "C00290",
+      "sentence": "如是几次，叫他抄书的人也没有了。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.500851403,
+      "prob_abstract": 0.499148597
+    },
+    {
+      "id": "C00072",
+      "sentence": "况且是要吃的时候。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5083363955,
+      "prob_abstract": 0.4916636045
+    },
+    {
+      "id": "C01231",
+      "sentence": "赵太爷钱太爷大受居民的尊敬，除有钱之外，就因为都是文童的爹爹，而阿Ｑ在精神上独不表格外的崇奉，他想：我的儿子会阔得多啦！",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4630338941,
+      "prob_abstract": 0.5369661059
+    },
+    {
+      "id": "C00701",
+      "sentence": "幸而车夫早有点停步，否则伊定要栽一个大跟斗，跌到头破血出了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5463907293,
+      "prob_abstract": 0.4536092707
+    },
+    {
+      "id": "C00270",
+      "sentence": "他身材很高大；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.431889522,
+      "prob_abstract": 0.568110478
+    },
+    {
+      "id": "C01957",
+      "sentence": "到了阴历五月初四的午前，他一回来，伊便将一叠账单塞在他的鼻子跟前，这也是往常所没有的。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4699781238,
+      "prob_abstract": 0.5300218762
+    },
+    {
+      "id": "C00866",
+      "sentence": "他有十多本金圣叹批评的《三国志》，时常坐着一个字一个字地读；",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4879866627,
+      "prob_abstract": 0.5120133373
+    },
+    {
+      "id": "C01126",
+      "sentence": "他出去了；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4869801808,
+      "prob_abstract": 0.5130198192
+    },
+    {
+      "id": "C02015",
+      "sentence": "况且我肚子里也没有这许多文章。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5464170923,
+      "prob_abstract": 0.4535829077
+    },
+    {
+      "id": "C02334",
+      "sentence": "他去了一刻，回来说，“没有。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6757767612,
+      "prob_abstract": 0.3242232388
+    },
+    {
+      "id": "C00226",
+      "sentence": "横梁和椽子都在头上发抖；",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5240057713,
+      "prob_abstract": 0.4759942287
+    },
+    {
+      "id": "C00412",
+      "sentence": "静了一会，似乎有点声音，便又动摇起来，轰的一声，都向后退；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4105826541,
+      "prob_abstract": 0.5894173459
+    },
+    {
+      "id": "C01334",
+      "sentence": "阿Ｑ尤其“深恶而痛绝之”的，是他的一条假辫子。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4334488915,
+      "prob_abstract": 0.5665511085
+    },
+    {
+      "id": "C00846",
+      "sentence": "“一代不如一代！",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5554970657,
+      "prob_abstract": 0.4445029343
+    },
+    {
+      "id": "C00206",
+      "sentence": "可是也晓得他们心思很不一样，一种是以为从来如此，应该吃的；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3759823753,
+      "prob_abstract": 0.6240176247
+    },
+    {
+      "id": "C00560",
+      "sentence": "两人站在枯草丛里，仰面看那乌鸦，那乌鸦也在笔直的树枝间，缩着头，铁铸一般站着。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5366547265,
+      "prob_abstract": 0.4633452735
+    },
+    {
+      "id": "C01598",
+      "sentence": "秀才娘子忙一瞥阿Ｑ的脸，看他感动了没有。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6355672498,
+      "prob_abstract": 0.3644327502
+    },
+    {
+      "id": "C02298",
+      "sentence": "在这迟疑之中，双喜可又看出底细来了，便又大声地说道，“我写包票！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6953553038,
+      "prob_abstract": 0.3046446962
+    },
+    {
+      "id": "C02185",
+      "sentence": "这样奇妙的音乐，我在北京确乎未曾听到过，所以即使如何爱国，也辩护不得，因为他虽然目无所见，耳朵是没有聋的。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.3705850299,
+      "prob_abstract": 0.6294149701
+    },
+    {
+      "id": "C01275",
+      "sentence": "骂声打声脚步声，昏头昏脑的一大阵，他才爬起来，赌摊不见了，人们也不见了，身上有几处很似乎有些痛，似乎也挨了几拳几脚似的，几个人诧异地对他看。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4971846467,
+      "prob_abstract": 0.5028153533
+    },
+    {
+      "id": "C01870",
+      "sentence": "他一急，两眼发黑，耳朵里的一声，似乎发昏了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4101155973,
+      "prob_abstract": 0.5898844027
+    },
+    {
+      "id": "C00891",
+      "sentence": "我活到七十九岁了，活够了。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.6198139914,
+      "prob_abstract": 0.3801860086
+    },
+    {
+      "id": "C01529",
+      "sentence": "阿Ｑ怕尼姑又放出黑狗来，拾起萝卜便走，沿路又检了几块小石头，但黑狗却并不再出现。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5975536595,
+      "prob_abstract": 0.4024463405
+    },
+    {
+      "id": "C01148",
+      "sentence": "故乡的山水也都渐渐远离了我，但我却并不感到怎样的留恋。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4350104285,
+      "prob_abstract": 0.5649895715
+    },
+    {
+      "id": "C00782",
+      "sentence": "这位博士是不懂中国和马来语的，人问他，你不懂话，怎么走路呢？",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4508498967,
+      "prob_abstract": 0.5491501033
+    },
+    {
+      "id": "C00965",
+      "sentence": "到夏天，他们仍旧在自家门口的土场上吃饭；",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4577057868,
+      "prob_abstract": 0.5422942132
+    },
+    {
+      "id": "C01014",
+      "sentence": "第二日，我便要他捕鸟。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.464418503,
+      "prob_abstract": 0.535581497
+    },
+    {
+      "id": "C00353",
+      "sentence": "穿一件破夹袄，盘着两腿，下面垫一个蒲包，用草绳在肩上挂住；",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4965652467,
+      "prob_abstract": 0.5034347533
+    },
+    {
+      "id": "C00454",
+      "sentence": "他的旁边，一面立着他的父亲，一面立着他的母亲，两人的眼光，都仿佛要在他身里注进什么又要取出什么似的；",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5246698966,
+      "prob_abstract": 0.4753301034
+    },
+    {
+      "id": "C00050",
+      "sentence": "我出了一惊，遮掩不住；",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5179921416,
+      "prob_abstract": 0.4820078584
+    },
+    {
+      "id": "C00493",
+      "sentence": "”康大叔见众人都耸起耳朵听他讲，便格外高兴，横肉块块饱绽，越发大声说，“这小东西不要命，不要就是了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.602881177,
+      "prob_abstract": 0.397118823
+    },
+    {
+      "id": "C00597",
+      "sentence": "她虽是粗笨女人，却知道何家与济世老店与自己的家，正是一个三角点；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4391233726,
+      "prob_abstract": 0.5608766274
+    },
+    {
+      "id": "C00743",
+      "sentence": "”\n\n“我也是忘却了纪念的一个人。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5734315145,
+      "prob_abstract": 0.4265684855
+    },
+    {
+      "id": "C01636",
+      "sentence": "他得意之余，禁不住大声地嚷道：\n\n“造反了！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6437189251,
+      "prob_abstract": 0.3562810749
+    },
+    {
+      "id": "C02377",
+      "sentence": "我们请客。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.334430244,
+      "prob_abstract": 0.665569756
+    },
+    {
+      "id": "C00789",
+      "sentence": "’‘犯不上，你们还是不剪上算———等一等吧。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3831519566,
+      "prob_abstract": 0.6168480434
+    },
+    {
+      "id": "C00035",
+      "sentence": "只有二十年以前，把古久先生的陈年流水簿子，踹了一脚，古久先生很不高兴。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5415921878,
+      "prob_abstract": 0.4584078122
+    },
+    {
+      "id": "C01186",
+      "sentence": "赵太爷愈看愈生气了，抢进几步说：“你敢胡说！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5961380143,
+      "prob_abstract": 0.4038619857
+    },
+    {
+      "id": "C01441",
+      "sentence": "害得我晚上没有觉睡，你的妈妈的！",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4128608296,
+      "prob_abstract": 0.5871391704
+    },
+    {
+      "id": "C01707",
+      "sentence": "据传来的消息，知道革命党虽然进了城，倒还没有什么大异样。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3620013663,
+      "prob_abstract": 0.6379986337
+    },
+    {
+      "id": "C00652",
+      "sentence": "哦，他们背了棺材来了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4745684955,
+      "prob_abstract": 0.5254315045
+    },
+    {
+      "id": "C00063",
+      "sentence": "你看那女人“咬你几口”的话，和一伙青面獠牙人的笑，和前天佃户的话，明明是暗号。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5330818796,
+      "prob_abstract": 0.4669181204
+    },
+    {
+      "id": "C01124",
+      "sentence": "母亲问他，知道他的家里事务忙，明天便得回去；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3816462781,
+      "prob_abstract": 0.6183537219
+    },
+    {
+      "id": "C01854",
+      "sentence": "你看，我做革命党还不上二十天，抢案就是十几件，全不破案，我的面子在哪里？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3973057202,
+      "prob_abstract": 0.6026942798
+    },
+    {
+      "id": "C01242",
+      "sentence": "一见面，他们便假作吃惊地说：\n\n“哙，亮起来了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6852135702,
+      "prob_abstract": 0.3147864298
+    },
+    {
+      "id": "C01796",
+      "sentence": "直待擒出祠外面的机关枪左近，他才有些清醒了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4963007869,
+      "prob_abstract": 0.5036992131
+    },
+    {
+      "id": "C01306",
+      "sentence": "老实说，他肯坐下去，简直还是抬举他。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4521351476,
+      "prob_abstract": 0.5478648524
+    },
+    {
+      "id": "C01331",
+      "sentence": "后来，他的母亲到处说，“这辫子是被坏人灌醉了酒剪去的。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5695466975,
+      "prob_abstract": 0.4304533025
+    },
+    {
+      "id": "C00926",
+      "sentence": "你可知道，这回保驾的是张大帅，张大帅就是燕人张翼德的后代，他一支丈八蛇矛，就有万夫不当之勇，谁能抵挡他。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5041818916,
+      "prob_abstract": 0.4958181084
+    },
+    {
+      "id": "C01810",
+      "sentence": "“你从实招来吧，免得吃苦。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5152215812,
+      "prob_abstract": 0.4847784188
+    },
+    {
+      "id": "C02132",
+      "sentence": "我说不然，那是天气冷，当然都躲着，太阳一出，一定出来的。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5179257149,
+      "prob_abstract": 0.4820742851
+    },
+    {
+      "id": "C00400",
+      "sentence": "一个还回头看他，样子不甚分明，但很像久饿的人见了食物一般，眼里闪出一种攫取的光。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4706750333,
+      "prob_abstract": 0.5293249667
+    },
+    {
+      "id": "C01900",
+      "sentence": "而且那是怎样的一个可笑的死囚呵，游了那么久的街，竟没有唱一句戏：他们白跟一趟了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4710134375,
+      "prob_abstract": 0.5289865625
+    },
+    {
+      "id": "C01891",
+      "sentence": "这些眼睛们似乎连成一气，已经在那里咬他的灵魂。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.427589261,
+      "prob_abstract": 0.572410739
+    },
+    {
+      "id": "C00669",
+      "sentence": "太大的屋子四面包围着她，太空的东西四面压着她，叫她喘气不得。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4991497655,
+      "prob_abstract": 0.5008502345
+    },
+    {
+      "id": "C02055",
+      "sentence": "这院子，是他家还未如此凋零的时候，一到夏天的夜间，夜夜和他的祖母在此纳凉的院子。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5179482829,
+      "prob_abstract": 0.4820517171
+    },
+    {
+      "id": "C02257",
+      "sentence": "我们鲁镇的习惯，本来是凡有出嫁的女儿，倘自己还未当家，夏间便大抵回到母家去消夏。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4136571809,
+      "prob_abstract": 0.5863428191
+    },
+    {
+      "id": "C01153",
+      "sentence": "我想：我竟与闰土隔绝到这地步了，但我们的后辈还是一气，宏儿不是正在想念水生吗。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4135983498,
+      "prob_abstract": 0.5864016502
+    },
+    {
+      "id": "C02080",
+      "sentence": "他已经悟到这许是下巴骨了，而那下巴骨也便在他手里索索地动弹起来，而且笑吟吟地显出笑影，终于听得他开口道：\n\n“这回又完了！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6671444412,
+      "prob_abstract": 0.3328555588
+    },
+    {
+      "id": "C00280",
+      "sentence": "”孔乙己睁大眼睛说，“你怎么这样凭空污人清白……”“什么清白？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6852672774,
+      "prob_abstract": 0.3147327226
+    },
+    {
+      "id": "C01300",
+      "sentence": "有一年的春天，他醉醺醺地在街上走，在墙根的日光下，看见王胡在那里赤着膊捉虱子，他忽然觉得身上也痒起来了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5418832318,
+      "prob_abstract": 0.4581167682
+    },
+    {
+      "id": "C01722",
+      "sentence": "而阿Ｑ总觉得自己太失意：既然革了命，不应该只是这样的。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.2917366039,
+      "prob_abstract": 0.7082633961
+    },
+    {
+      "id": "C00040",
+      "sentence": "这真叫我怕，叫我纳罕而且伤心。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4981438792,
+      "prob_abstract": 0.5018561208
+    },
+    {
+      "id": "C01588",
+      "sentence": "”\n\n“完了？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.8311508062,
+      "prob_abstract": 0.1688491938
+    },
+    {
+      "id": "C01787",
+      "sentence": "他躺了好一会，这才定了神，而且发出关于自己的思想来：白盔白甲的人明明到了，并不来打招呼，搬了许多好东西，又没有自己的份———这全是假洋鬼子可恶，不准我造反，否则，这次何至于没有我的份呢？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.424769155,
+      "prob_abstract": 0.575230845
+    },
+    {
+      "id": "C01430",
+      "sentence": "吴妈只是哭，夹些话，却不甚听得分明。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5154454919,
+      "prob_abstract": 0.4845545081
+    },
+    {
+      "id": "C02363",
+      "sentence": "八癞子”。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "C01562",
+      "sentence": "但阿Ｑ又四面一看，忽然扬起右手，照着伸长脖子听得出神的王胡的后项窝上直劈下去道：\n\n“嚓！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6124257776,
+      "prob_abstract": 0.3875742224
+    },
+    {
+      "id": "C01731",
+      "sentence": "他写了一封“黄伞格”的信，托假洋鬼子带上城，而且托他给自己介绍介绍，去进自由党。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.6064598936,
+      "prob_abstract": 0.3935401064
+    },
+    {
+      "id": "C00940",
+      "sentence": "他心里但觉得事情似乎十分危急，也想些方法，想些计划，但总是非常模糊，贯穿不得：“辫子呢辫子？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3967448376,
+      "prob_abstract": 0.6032551624
+    },
+    {
+      "id": "C00570",
+      "sentence": "但夜深没有睡的既然只有两家，这单四嫂子家有声音，便自然只有老拱们听到，没有声音，也只有老拱们听到。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5110163686,
+      "prob_abstract": 0.4889836314
+    },
+    {
+      "id": "C00151",
+      "sentence": "我便问他，“吃人的事，对吗？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5505822155,
+      "prob_abstract": 0.4494177845
+    },
+    {
+      "id": "C00798",
+      "sentence": "但我没有到乡间去。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4744556846,
+      "prob_abstract": 0.5255443154
+    },
+    {
+      "id": "C00596",
+      "sentence": "”\n\n单四嫂子接过药方，一面走，一面想。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.6257933545,
+      "prob_abstract": 0.3742066455
+    },
+    {
+      "id": "C00366",
+      "sentence": "他从破衣袋里摸出四文大钱，放在我手里，见他满手是泥，原来他便用这手走来的。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4437943258,
+      "prob_abstract": 0.5562056742
+    },
+    {
+      "id": "C01706",
+      "sentence": "”\n\n\n\n* * *\n\n\n\n\n\n第八章不准革命\n\n\n未庄的人心日见其安静了。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5258514742,
+      "prob_abstract": 0.4741485258
+    },
+    {
+      "id": "C01202",
+      "sentence": "倘使他号叫月亭，或者在八月间做过生日，那一定是阿桂了；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4700417098,
+      "prob_abstract": 0.5299582902
+    },
+    {
+      "id": "C00646",
+      "sentence": "老拱的歌声早已寂静，咸亨也熄了灯。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4778255848,
+      "prob_abstract": 0.5221744152
+    },
+    {
+      "id": "C01114",
+      "sentence": "宏儿听得这话，便来招水生，水生却松松爽爽同他一路出去了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5590436384,
+      "prob_abstract": 0.4409563616
+    },
+    {
+      "id": "C01175",
+      "sentence": "“别传”呢，阿Ｑ实在未曾有大总统上谕宣付国史馆立“本传”———虽说英国正史上并无“博徒列传”，而文豪迭更司也做过《博徒别传》这一部书，但文豪则可，在我辈却不可的。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4262536875,
+      "prob_abstract": 0.5737463125
+    },
+    {
+      "id": "C01066",
+      "sentence": "但这大约因为年龄的关系，我却并未蒙着一毫感化，所以竟完全忘却了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3669157228,
+      "prob_abstract": 0.6330842772
+    },
+    {
+      "id": "C00816",
+      "sentence": "面河的农家的烟突里，逐渐减少了炊烟，女人孩子们都在自己门口的土场上泼些水，放下小桌子和矮凳；",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4326177235,
+      "prob_abstract": 0.5673822765
+    },
+    {
+      "id": "C00428",
+      "sentence": "太阳也出来了，在他面前，显出一条大道，直到他家中，后面也照见丁字街头破匾上“古亭”这四个黯淡的金字。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.562483349,
+      "prob_abstract": 0.437516651
+    },
+    {
+      "id": "C01923",
+      "sentence": "教员的薪水欠到大半年了，只要别有官俸支持，他也决不开一开口。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.443754223,
+      "prob_abstract": 0.556245777
+    },
+    {
+      "id": "C01263",
+      "sentence": "人和穿堂空在那里啦———！",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.3390868821,
+      "prob_abstract": 0.6609131179
+    },
+    {
+      "id": "C01381",
+      "sentence": "”他又想。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.538538115,
+      "prob_abstract": 0.461461885
+    },
+    {
+      "id": "C00553",
+      "sentence": "便觉得心里忽然感到一种不足和空虚，不愿意根究。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.385853213,
+      "prob_abstract": 0.614146787
+    },
+    {
+      "id": "C01386",
+      "sentence": "中国的男人，本来大半都可以做圣贤，可惜全被女人毁掉了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4109121434,
+      "prob_abstract": 0.5890878566
+    },
+    {
+      "id": "C00719",
+      "sentence": "我走着，一面想，几乎怕敢想到我自己。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5093083602,
+      "prob_abstract": 0.4906916398
+    },
+    {
+      "id": "C00441",
+      "sentence": "一阵红黑的火焰过去时，店屋里散满了一种奇怪的香味。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4512815277,
+      "prob_abstract": 0.5487184723
+    },
+    {
+      "id": "C02041",
+      "sentence": "“这回又完了！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5014825208,
+      "prob_abstract": 0.4985174792
+    },
+    {
+      "id": "C00300",
+      "sentence": "在这些时候，我可以附和着笑，掌柜是决不责备的。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5075710555,
+      "prob_abstract": 0.4924289445
+    },
+    {
+      "id": "C00593",
+      "sentence": "”\n\n“他喘不过气来，鼻翅子都扇着呢。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.7607577568,
+      "prob_abstract": 0.2392422432
+    },
+    {
+      "id": "C01481",
+      "sentence": "“好了，好了！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5332452694,
+      "prob_abstract": 0.4667547306
+    },
+    {
+      "id": "C01917",
+      "sentence": "有几个却对他微笑了，大约以为这是他替自己的辩解：因为方玄绰就是兼做官僚的。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3432160893,
+      "prob_abstract": 0.6567839107
+    },
+    {
+      "id": "C01544",
+      "sentence": "人人都愿意知道现钱和新夹袄的阿Ｑ的中兴史，所以在酒店里、茶馆里、庙檐下，便渐渐地探听出来了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5019689103,
+      "prob_abstract": 0.4980310897
+    },
+    {
+      "id": "C02271",
+      "sentence": "至于我在那里所第一盼望的，却在到赵庄去看戏。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4683729015,
+      "prob_abstract": 0.5316270985
+    },
+    {
+      "id": "C00314",
+      "sentence": "又好笑，又不耐烦，懒懒地答他道，“谁要你教，不是草头底下一个来回的回字吗？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5697030087,
+      "prob_abstract": 0.4302969913
+    },
+    {
+      "id": "C00365",
+      "sentence": "我温了酒，端出去，放在门槛上。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5735661375,
+      "prob_abstract": 0.4264338625
+    },
+    {
+      "id": "C01880",
+      "sentence": "他的思想仿佛旋风似的在脑里一回旋：《小孤孀上坟》欠堂皇，《龙虎斗》里的“悔不该……”也太乏，还是“手执钢鞭将你打”罢。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4029914912,
+      "prob_abstract": 0.5970085088
+    },
+    {
+      "id": "C01743",
+      "sentence": "洋先生却没有见他，因为白着眼睛讲得正起劲：\n\n“我是性急的，所以我们见面，我总是说：洪哥！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5811298745,
+      "prob_abstract": 0.4188701255
+    },
+    {
+      "id": "C00348",
+      "sentence": "忽然间听得一个声音，“温一碗酒。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5623852462,
+      "prob_abstract": 0.4376147538
+    },
+    {
+      "id": "C01739",
+      "sentence": "他除却赶紧去和假洋鬼子商量之外，再没有别的道路了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4889670063,
+      "prob_abstract": 0.5110329937
+    },
+    {
+      "id": "C02099",
+      "sentence": "这一对白兔，似乎离娘并不久，虽然是异类，也可以看出他们的天真烂漫来。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3713580469,
+      "prob_abstract": 0.6286419531
+    },
+    {
+      "id": "C01336",
+      "sentence": "他的老婆不跳第四回井，也不是好女人。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4031427496,
+      "prob_abstract": 0.5968572504
+    },
+    {
+      "id": "C00227",
+      "sentence": "抖了一会，就大起来，堆在我身上。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4750371556,
+      "prob_abstract": 0.5249628444
+    },
+    {
+      "id": "C01235",
+      "sentence": "阿Ｑ“先前阔”，见识高，而且“真能做”，本来几乎是一个“完人”了，但可惜他体质上还有一些缺点。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.54933535,
+      "prob_abstract": 0.45066465
+    },
+    {
+      "id": "C01096",
+      "sentence": "……”\n\n我似乎打了一个寒噤；",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.6396948708,
+      "prob_abstract": 0.3603051292
+    },
+    {
+      "id": "C00762",
+      "sentence": "“我不知道有多少中国人只因为这不痛不痒的头发而吃苦，受难，灭亡。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4058596141,
+      "prob_abstract": 0.5941403859
+    },
+    {
+      "id": "C00812",
+      "sentence": "请你恕我打搅，好在明天便不是双十节，我们统可以忘却了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3934584041,
+      "prob_abstract": 0.6065415959
+    },
+    {
+      "id": "C02197",
+      "sentence": "”\n\n然而养成池沼的音乐家却只是爱罗先珂君的一件事。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4899168424,
+      "prob_abstract": 0.5100831576
+    },
+    {
+      "id": "C00429",
+      "sentence": "二\n\n\n老栓走到家，店面早已经收拾干净，一排一排的茶桌，滑溜溜地发光。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5043302637,
+      "prob_abstract": 0.4956697363
+    },
+    {
+      "id": "C02262",
+      "sentence": "和我一同玩的是许多小朋友，因为有了远客，他们也都从父母那里得了减少工作的许可，伴我来游戏。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4267811248,
+      "prob_abstract": 0.5732188752
+    },
+    {
+      "id": "C00874",
+      "sentence": "七斤嫂记得，两年前七斤喝醉了酒，曾经骂过赵七爷是“贱胎”，所以这时便立刻直觉到七斤的危险，心坎里突突地发起跳来。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.543127148,
+      "prob_abstract": 0.456872852
+    },
+    {
+      "id": "C02147",
+      "sentence": "所以三太太一有闲空，便捉住母兔，将小兔一个一个轮流地摆在肚子上来喝奶，不准有多少。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5639470953,
+      "prob_abstract": 0.4360529047
+    },
+    {
+      "id": "C00310",
+      "sentence": "……我教给你，记着！",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5505090076,
+      "prob_abstract": 0.4494909924
+    },
+    {
+      "id": "C01777",
+      "sentence": "”小Ｄ气喘吁吁地说。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.7394465723,
+      "prob_abstract": 0.2605534277
+    },
+    {
+      "id": "C01573",
+      "sentence": "”\n\n后来这终于从浅闺传进深闺里去了。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5718298271,
+      "prob_abstract": 0.4281701729
+    },
+    {
+      "id": "C00671",
+      "sentence": "不愿意见这屋子，吹熄了灯，躺着。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5042406416,
+      "prob_abstract": 0.4957593584
+    },
+    {
+      "id": "C02184",
+      "sentence": "我开不得口。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4624422276,
+      "prob_abstract": 0.5375577724
+    },
+    {
+      "id": "C00721",
+      "sentence": "我还能裁判车夫吗？",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4888347044,
+      "prob_abstract": 0.5111652956
+    },
+    {
+      "id": "C01106",
+      "sentence": "你们先前不是哥弟称呼吗？",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5083782438,
+      "prob_abstract": 0.4916217562
+    },
+    {
+      "id": "C00841",
+      "sentence": "他在村人里面，的确已经是一名出场人物了。",
+      "true": "abstract",
+      "pred": "concrete",
+      "prob_concrete": 0.5416753921,
+      "prob_abstract": 0.4583246079
+    },
+    {
+      "id": "C01359",
+      "sentence": "“这断子绝孙的阿Ｑ！",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5387091235,
+      "prob_abstract": 0.4612908765
+    },
+    {
+      "id": "C02133",
+      "sentence": "太阳出来了，它们却都不见。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5667438762,
+      "prob_abstract": 0.4332561238
+    },
+    {
+      "id": "C00678",
+      "sentence": "她单觉得这屋子太静，太大，太空罢了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4271175087,
+      "prob_abstract": 0.5728824913
+    },
+    {
+      "id": "C00016",
+      "sentence": "我不见他，已是三十多年；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4086860772,
+      "prob_abstract": 0.5913139228
+    },
+    {
+      "id": "C01397",
+      "sentence": "谁知道他将到“而立”之年，竟被小尼姑害得飘飘然了。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4311777265,
+      "prob_abstract": 0.5688222735
+    },
+    {
+      "id": "C02003",
+      "sentence": "”他戟着第二个指头在帐子里的空中画了一个半圆，方太太跟着指头也看了一个半圆，只见这手便去翻开了《尝试集》。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5403372366,
+      "prob_abstract": 0.4596627634
+    },
+    {
+      "id": "C02016",
+      "sentence": "”\n\n“那么，过了节怎么办呢？",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.7076534298,
+      "prob_abstract": 0.2923465702
+    },
+    {
+      "id": "C02368",
+      "sentence": "我向船头一望，前面已经是平桥。",
+      "true": "concrete",
+      "pred": "concrete",
+      "prob_concrete": 0.5288386244,
+      "prob_abstract": 0.4711613756
+    },
+    {
+      "id": "C00292",
+      "sentence": "但他在我们店里，品行却比别人都好，就是从不拖欠；",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3921380155,
+      "prob_abstract": 0.6078619845
+    },
+    {
+      "id": "C02049",
+      "sentence": "最先就绝了人声，接着是陆续地熄了灯火，独有月亮，却缓缓地出现在寒夜的空中。",
+      "true": "concrete",
+      "pred": "abstract",
+      "prob_concrete": 0.4900161524,
+      "prob_abstract": 0.5099838476
+    },
+    {
+      "id": "C01955",
+      "sentence": "这种脾气，虽然有时连自己也觉得是孤高，但往往同时也疑心这其实是没本领。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.361940191,
+      "prob_abstract": 0.638059809
+    },
+    {
+      "id": "C01097",
+      "sentence": "我就知道，我们之间已经隔了一层可悲的厚障壁了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4293129576,
+      "prob_abstract": 0.5706870424
+    },
+    {
+      "id": "C00234",
+      "sentence": "晓得妹子死掉的缘故，也全在他。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4375476749,
+      "prob_abstract": 0.5624523251
+    },
+    {
+      "id": "C01746",
+      "sentence": "———这是洋话，你们不懂的。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.3410182901,
+      "prob_abstract": 0.6589817099
+    },
+    {
+      "id": "C01760",
+      "sentence": "从此决不能望有白盔白甲的人来叫他，他所有的抱负、志向、希望、前程，全被一笔勾销了。",
+      "true": "abstract",
+      "pred": "abstract",
+      "prob_concrete": 0.4583085249,
+      "prob_abstract": 0.5416914751
+    }
+  ],
+  "analysis_predictions": [
+    {
+      "id": "A00001",
+      "sentence": "（一）\n\n\n『你要杏仁粥喫麽？",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00002",
+      "sentence": "』\n\n\n\n一個二十三四歲的很時髦的女人背靠了窗口的桌子，遠遠的問他說。",
+      "pred": "abstract",
+      "prob_concrete": 0.4683106953,
+      "prob_abstract": 0.5316893047
+    },
+    {
+      "id": "A00003",
+      "sentence": "你過來我對你講。",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00004",
+      "sentence": "』\n\n\n\n他躺在銅牀上的薄綢被裏，含了微笑，面朝着她，一點兒精神也沒有的囘答她說。",
+      "pred": "concrete",
+      "prob_concrete": 0.5219459829,
+      "prob_abstract": 0.4780540171
+    },
+    {
+      "id": "A00005",
+      "sentence": "牀上的珠羅圓頂帳，大約是因爲處地很高，沒有蚊子的緣故，高高搭起在那裏。",
+      "pred": "abstract",
+      "prob_concrete": 0.4423884099,
+      "prob_abstract": 0.5576115901
+    },
+    {
+      "id": "A00006",
+      "sentence": "光亮射人的這銅牀的銅梗，只反映着一條薄薄的淡靑綢被，被的一頭，映着一箇嫵媚的少年的縮小圖，把頭擱在潔白的鴨絨枕上。",
+      "pred": "concrete",
+      "prob_concrete": 0.5512262372,
+      "prob_abstract": 0.4487737628
+    },
+    {
+      "id": "A00007",
+      "sentence": "東面靠牆，在牀與窗口桌子之間，有一個衣廚，衣廚上的大鏡子裏，空空的照着一架擺在對面的紅木梳洗檯，檯旁有疊着的幾隻皮箱。",
+      "pred": "abstract",
+      "prob_concrete": 0.4989587969,
+      "prob_abstract": 0.5010412031
+    },
+    {
+      "id": "A00008",
+      "sentence": "前面是一個大窗，窗口擺着一 張桌子，窗外樓下是花園，所以站在窗口的桌子前，一望能見遠近許多紅白的屋頂和靑葱的樹木。",
+      "pred": "concrete",
+      "prob_concrete": 0.5291638089,
+      "prob_abstract": 0.4708361911
+    },
+    {
+      "id": "A00009",
+      "sentence": "那少年睡在牀上，向窗外望去，只見了半灣悠悠的碧落，和一種眼雖看不見而感覺得出來的晴爽的秋氣。",
+      "pred": "concrete",
+      "prob_concrete": 0.5542421328,
+      "prob_abstract": 0.4457578672
+    },
+    {
+      "id": "A00010",
+      "sentence": "她站在窗口的桌子前頭，以這晴空作了背景，她的蓬鬆未束的亂髮，鵝蛋形的笑臉，漆黑的瞳人，淡紅綢的背心，從左右肩垂下來的肥白的兩臂，和她臉上的晨起時大家都有的那一種嬌倦的形容，却使那睡在牀上的少年，發見了許多到現在還未曾看出過的美點。",
+      "pred": "concrete",
+      "prob_concrete": 0.5222097802,
+      "prob_abstract": 0.4777902198
+    },
+    {
+      "id": "A00011",
+      "sentence": "他懶懶的躺在被裏，一邊含着微笑，一邊儘在點頭，招她過去。",
+      "pred": "concrete",
+      "prob_concrete": 0.5491020969,
+      "prob_abstract": 0.4508979031
+    },
+    {
+      "id": "A00012",
+      "sentence": "她對他笑了一笑，先走到梳洗檯的水盆裏，洗了一洗手，就走到牀邊上去。",
+      "pred": "concrete",
+      "prob_concrete": 0.548189626,
+      "prob_abstract": 0.451810374
+    },
+    {
+      "id": "A00013",
+      "sentence": "衣廚的鏡裏照出了她的底下穿着的一條白紗短腳褲，腳灣膝以下的兩條柔嫩的腳肚，和一雙套進在繡花拖鞋裏的可愛的七八寸長的肉腳，同時并照出了自腰部以下至腳灣膝止的一段曲綫很多的肉體的蠕動。",
+      "pred": "abstract",
+      "prob_concrete": 0.4917408292,
+      "prob_abstract": 0.5082591708
+    },
+    {
+      "id": "A00014",
+      "sentence": "她走到了牀邊，就面朝着了少年，側身坐下去。",
+      "pred": "abstract",
+      "prob_concrete": 0.4468389923,
+      "prob_abstract": 0.5531610077
+    },
+    {
+      "id": "A00015",
+      "sentence": "少年從被裏伸出了一隻嫩白清瘦的手 來，把她的肩下的大臂捏住了。",
+      "pred": "concrete",
+      "prob_concrete": 0.5189391595,
+      "prob_abstract": 0.4810608405
+    },
+    {
+      "id": "A00016",
+      "sentence": "她見他儘在那裏對她微笑，所以又問他說。",
+      "pred": "abstract",
+      "prob_concrete": 0.4545171175,
+      "prob_abstract": 0.5454828825
+    },
+    {
+      "id": "A00017",
+      "sentence": "『你有什麽話講？",
+      "pred": "abstract",
+      "prob_concrete": 0.4515198597,
+      "prob_abstract": 0.5484801403
+    },
+    {
+      "id": "A00018",
+      "sentence": "』\n\n\n\n他點了一點頭，輕輕的說：\n\n『你把頭伏下來！",
+      "pred": "concrete",
+      "prob_concrete": 0.5866488184,
+      "prob_abstract": 0.4133511816
+    },
+    {
+      "id": "A00019",
+      "sentence": "』\n\n\n\n她依着了他，就把耳朵送到他的臉上去，他從被裏又伸出一隻手來，把她的半裸的上體，打斜的抱住，接連的親了幾箇嘆。",
+      "pred": "abstract",
+      "prob_concrete": 0.4417098383,
+      "prob_abstract": 0.5582901617
+    },
+    {
+      "id": "A00020",
+      "sentence": "她由他戲弄了一囘，方纔把身子坐起，收了笑容，又問他說：\n\n『當眞的你要不要什麽喫，一夜沒有睡覺，你肚裏不餓的麽？",
+      "pred": "concrete",
+      "prob_concrete": 0.5790021409,
+      "prob_abstract": 0.4209978591
+    },
+    {
+      "id": "A00021",
+      "sentence": "』\n\n\n\n他只是微微的笑著，搖了一搖頭說：\n\n『我什麽也不要喫，還早得很哩，你再來睡一忽罷！",
+      "pred": "concrete",
+      "prob_concrete": 0.5190596511,
+      "prob_abstract": 0.4809403489
+    },
+    {
+      "id": "A00022",
+      "sentence": "』\n\n\n\n『已經快十點了，還說早哩！",
+      "pred": "concrete",
+      "prob_concrete": 0.6342117647,
+      "prob_abstract": 0.3657882353
+    },
+    {
+      "id": "A00023",
+      "sentence": "』\n\n\n\n『你再來睡一忽罷！",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00024",
+      "sentence": "』\n\n\n\n\n\n『呸！",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00025",
+      "sentence": "』\n\n\n\n這樣的罵了一聲，她就走上梳洗檯前去梳理頭髮去了。",
+      "pred": "concrete",
+      "prob_concrete": 0.5136276378,
+      "prob_abstract": 0.4863723622
+    },
+    {
+      "id": "A00026",
+      "sentence": "少年在被裏看了一忽清淡的秋空，斷斷續續的念了幾句\n\n『……七尺龍鬚新捲席，已涼天氣未寒時。",
+      "pred": "concrete",
+      "prob_concrete": 0.5197795192,
+      "prob_abstract": 0.4802204808
+    },
+    {
+      "id": "A00027",
+      "sentence": "……水晶簾捲近秋河。",
+      "pred": "abstract",
+      "prob_concrete": 0.4934567502,
+      "prob_abstract": 0.5065432498
+    },
+    {
+      "id": "A00028",
+      "sentence": "……』\n\n\n\n詩，又看了一忽她的背影，和又在頭上的一雙白臂，糊糊塗塗的問答了幾聲：\n\n『怎麽不叫娘姨來替你梳？",
+      "pred": "concrete",
+      "prob_concrete": 0.5224328051,
+      "prob_abstract": 0.4775671949
+    },
+    {
+      "id": "A00029",
+      "sentence": "』\n\n\n\n『你這樣睡在這裏，叫娘姨上來到好看呀！",
+      "pred": "abstract",
+      "prob_concrete": 0.4969548824,
+      "prob_abstract": 0.5030451176
+    },
+    {
+      "id": "A00030",
+      "sentence": "』\n\n\n\n『怕什麽？",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00031",
+      "sentence": "』\n\n\n\n『那裏有兒子扒上娘床上來睡的？",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00032",
+      "sentence": "被她們看見，不要羞死人麽？",
+      "pred": "concrete",
+      "prob_concrete": 0.5284187655,
+      "prob_abstract": 0.4715812345
+    },
+    {
+      "id": "A00033",
+      "sentence": "』\n\n\n\n『怕什麽？",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00034",
+      "sentence": "』\n\n\n\n他啊啊的開了口，打了一箇呵欠，伸了一伸腰，又念了一句：\n\n『水晶簾下看梳頭。",
+      "pred": "concrete",
+      "prob_concrete": 0.5620518224,
+      "prob_abstract": 0.4379481776
+    },
+    {
+      "id": "A00035",
+      "sentence": "』\n\n\n\n\n\n就昏昏沈沈的睡着了。",
+      "pred": "abstract",
+      "prob_concrete": 0.3915589365,
+      "prob_abstract": 0.6084410635
+    },
+    {
+      "id": "A00036",
+      "sentence": "（二）\n\n\n上海法界霞飛路將盡頭處，有折向北去的一條小巷；",
+      "pred": "abstract",
+      "prob_concrete": 0.4637835055,
+      "prob_abstract": 0.5362164945
+    },
+    {
+      "id": "A00037",
+      "sentence": "從這小巷口進去三五十步，在綠色的花草樹木中間，有一座清潔的三層樓的小洋房，躺在初秋晴快的午前空氣裏。",
+      "pred": "abstract",
+      "prob_concrete": 0.4927397553,
+      "prob_abstract": 0.5072602447
+    },
+    {
+      "id": "A00038",
+      "sentence": "這座洋房是K省呂督軍在上海的住宅。",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00039",
+      "sentence": "英明的呂督軍從馬弁出身，費盡了許多苦心，纔弄到了現在的地位。",
+      "pred": "abstract",
+      "prob_concrete": 0.4927191353,
+      "prob_abstract": 0.5072808647
+    },
+    {
+      "id": "A00040",
+      "sentence": "他大約是服了老子知足之戒，也不想再昇上去作總統，年年坐收了八九十萬的進款。",
+      "pred": "abstract",
+      "prob_concrete": 0.3991969982,
+      "prob_abstract": 0.6008030018
+    },
+    {
+      "id": "A00041",
+      "sentence": "儘在享受快樂。",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00042",
+      "sentence": "他的太太；",
+      "pred": "abstract",
+      "prob_concrete": 0.4163332921,
+      "prob_abstract": 0.5836667079
+    },
+    {
+      "id": "A00043",
+      "sentence": "本來是他當標統時候的上官協統某的寡妹，那時候他新喪正室，有人爲他掇合，就結了婚；",
+      "pred": "abstract",
+      "prob_concrete": 0.4372207912,
+      "prob_abstract": 0.5627792088
+    },
+    {
+      "id": "A00044",
+      "sentence": "結婚沒有幾箇月她便生下了一箇小孩，他也不曉得這小孩究竟是誰生的，因爲協統家裏出入的人很多，他不能指定說是何人之子。",
+      "pred": "abstract",
+      "prob_concrete": 0.4245758515,
+      "prob_abstract": 0.5754241485
+    },
+    {
+      "id": "A00045",
+      "sentence": "并且協統是一手提拔他起來的一箇大恩人，他雖則對他的塡亡正室心裏不很滿足，然以功名利祿爲人生第一義的呂標 統，也沒有勇氣去追搜這些醜跡，所以就貓貓虎虎把那小孩認作了兒子；",
+      "pred": "abstract",
+      "prob_concrete": 0.3877927592,
+      "prob_abstract": 0.6122072408
+    },
+    {
+      "id": "A00046",
+      "sentence": "其實他因爲在山東當差的時候，染了惡症，雖則性慾本能尙在，生殖的能力，却早失掉了。",
+      "pred": "concrete",
+      "prob_concrete": 0.5306612939,
+      "prob_abstract": 0.4693387061
+    },
+    {
+      "id": "A00047",
+      "sentence": "十幾年的戰亂，把中國的國脈和小百姓，糟得不成樣子。",
+      "pred": "abstract",
+      "prob_concrete": 0.4791283852,
+      "prob_abstract": 0.5208716148
+    },
+    {
+      "id": "A00048",
+      "sentence": "但呂標統的根據，却一天一天的鞏固起來；",
+      "pred": "concrete",
+      "prob_concrete": 0.5297825705,
+      "prob_abstract": 0.4702174295
+    },
+    {
+      "id": "A00049",
+      "sentence": "革命以後，他逐走了幾個上官，就漸漸的昇到了現在的地位。",
+      "pred": "abstract",
+      "prob_concrete": 0.4550094615,
+      "prob_abstract": 0.5449905385
+    },
+    {
+      "id": "A00050",
+      "sentence": "在他絡續收買强佔的女子和許多他手下的屬僚的妻妾，由他任意戲弄的婦人中間，他所最愛的，却是一箇他到K省後第二年由K省女子師範裏用强迫手段娶來的一個愛妾。",
+      "pred": "abstract",
+      "prob_concrete": 0.4563050585,
+      "prob_abstract": 0.5436949415
+    },
+    {
+      "id": "A00051",
+      "sentence": "當時還只十九歲的她，因爲那一天，督軍要到她校裏來參觀，她就做了全校的代表，把一幅繡畫圍屏，捧呈督軍。",
+      "pred": "concrete",
+      "prob_concrete": 0.5406551639,
+      "prob_abstract": 0.4593448361
+    },
+    {
+      "id": "A00052",
+      "sentence": "呂督軍本來是一個粗暴的武夫，從來沒有嘗過女學生的滋味，那一天見了她以後，就橫空的造了些風波出來，用了威迫的手段，半買半搶的終於把她收作了籠中的馴鳥；",
+      "pred": "abstract",
+      "prob_concrete": 0.4938975966,
+      "prob_abstract": 0.5061024034
+    },
+    {
+      "id": "A00053",
+      "sentence": "像這樣的事情在文明的目下的中國，本來也算不得什麽奇事。",
+      "pred": "abstract",
+      "prob_concrete": 0.4132241506,
+      "prob_abstract": 0.5867758494
+    },
+    {
+      "id": "A00054",
+      "sentence": "不過這一個女學生，却有些古風，她對呂督軍始終總是冷淡得很。",
+      "pred": "abstract",
+      "prob_concrete": 0.4902724635,
+      "prob_abstract": 0.5097275365
+    },
+    {
+      "id": "A00055",
+      "sentence": "呂督軍對於女人，從來是言出必從的人，只有她時時顯出些反抗冷淡的態度來，因此反而愈加激起了他的鍾愛。",
+      "pred": "abstract",
+      "prob_concrete": 0.4861513261,
+      "prob_abstract": 0.5138486739
+    },
+    {
+      "id": "A00056",
+      "sentence": "呂督軍在霞飛路盡處的那所住宅，也是爲她而買，預備她每年到上海來的時候給她使用的。",
+      "pred": "abstract",
+      "prob_concrete": 0.3594362747,
+      "prob_abstract": 0.6405637253
+    },
+    {
+      "id": "A00057",
+      "sentence": "今年夏天呂督軍因爲軍務喫緊，怕有大變，所以着人把她送到上海來住，仰求外國人的保護；",
+      "pred": "abstract",
+      "prob_concrete": 0.4712511921,
+      "prob_abstract": 0.5287488079
+    },
+    {
+      "id": "A00058",
+      "sentence": "他自家天天在K省接發電報，勞心國事，中國的一般國民，對他也感激得很。",
+      "pred": "abstract",
+      "prob_concrete": 0.4010648797,
+      "prob_abstract": 0.5989351203
+    },
+    {
+      "id": "A00059",
+      "sentence": "他的公子，今年已經十九歲了，呂督軍於二年前派了兩位翻譯。",
+      "pred": "abstract",
+      "prob_concrete": 0.4793389784,
+      "prob_abstract": 0.5206610216
+    },
+    {
+      "id": "A00060",
+      "sentence": "陪他到美國去留學。",
+      "pred": "concrete",
+      "prob_concrete": 0.5123531243,
+      "prob_abstract": 0.4876468757
+    },
+    {
+      "id": "A00061",
+      "sentence": "他天天和那些美國的下流婦人來往，覺得有些厭倦起來了。",
+      "pred": "abstract",
+      "prob_concrete": 0.4623242403,
+      "prob_abstract": 0.5376757597
+    },
+    {
+      "id": "A00062",
+      "sentence": "所以今年暑假之前，他就帶了兩位翻譯，囘到了中國。",
+      "pred": "abstract",
+      "prob_concrete": 0.4124689215,
+      "prob_abstract": 0.5875310785
+    },
+    {
+      "id": "A00063",
+      "sentence": "他一到上海，在碼頭上等他，和他同坐汽車，接他囘到霞飛路的住宅裏來的，就是他的兩年前已經在那裏癡想的那位女學生的他的名義上的娘。",
+      "pred": "abstract",
+      "prob_concrete": 0.4260172971,
+      "prob_abstract": 0.5739827029
+    },
+    {
+      "id": "A00064",
+      "sentence": "（三）\n\n\n他名義上的母親，當他初赴美國的時候，還有些對呂督軍的敵意含着，所以對他亦沒有什麽特別的感情。",
+      "pred": "abstract",
+      "prob_concrete": 0.4954648132,
+      "prob_abstract": 0.5045351868
+    },
+    {
+      "id": "A00065",
+      "sentence": "并且當時他年紀還小，時常住在他的生母跟前。",
+      "pred": "abstract",
+      "prob_concrete": 0.4304402642,
+      "prob_abstract": 0.5695597358
+    },
+    {
+      "id": "A00066",
+      "sentence": "她與他的中間，更不得 不生疎了。",
+      "pred": "concrete",
+      "prob_concrete": 0.5055679137,
+      "prob_abstract": 0.4944320863
+    },
+    {
+      "id": "A00067",
+      "sentence": "那一天船到的前日，正是六月中旬很熱的一天，她在霞飛路住宅裏，接到了從船上發的無線電報，說他於明日下午到上海，她的心裏還平靜得很。",
+      "pred": "abstract",
+      "prob_concrete": 0.4976968544,
+      "prob_abstract": 0.5023031456
+    },
+    {
+      "id": "A00068",
+      "sentence": "第二天午後，她正閒空得無聊，喫完了午膳，在牀上躺了一忽，覺得熱得厲害，就起來換了衣服，坐了汽車上碼頭去接他，一則可以收受些涼風，二則也可以表示些對他的好意，除此之外，她的心裏，實無絲毫邪念的。",
+      "pred": "abstract",
+      "prob_concrete": 0.4475160315,
+      "prob_abstract": 0.5524839685
+    },
+    {
+      "id": "A00069",
+      "sentence": "她的汽車到碼頭的時候，船已靠岸了，因爲上下的脚夫旅客亂雜得很，所以她也不下車來。",
+      "pred": "abstract",
+      "prob_concrete": 0.4783750623,
+      "prob_abstract": 0.5216249377
+    },
+    {
+      "id": "A00070",
+      "sentence": "她敎汽車夫從人叢中擠上船去問訊去，過了一會，汽車夫就領了兩個三十左右鼻下各有一簇短髭的翻譯和一位瀟洒的靑年紳士過來。",
+      "pred": "concrete",
+      "prob_concrete": 0.508506427,
+      "prob_abstract": 0.491493573
+    },
+    {
+      "id": "A00071",
+      "sentence": "那靑年紳士走到汽車邊上，對她笑了一臉，就伸手出來捏她的手，她臉上紅了一紅，心裏突突跳箇不住；",
+      "pred": "concrete",
+      "prob_concrete": 0.5066540726,
+      "prob_abstract": 0.4933459274
+    },
+    {
+      "id": "A00072",
+      "sentence": "但是由他的冰涼皙白的那隻手裏，傳過來的一道魔力，却使她恍恍惚惚的迷醉了一陣。",
+      "pred": "concrete",
+      "prob_concrete": 0.5074021382,
+      "prob_abstract": 0.4925978618
+    },
+    {
+      "id": "A00073",
+      "sentence": "囘復了自覺意識，和那兩箇中年人應酬了幾句，她就邀他進汽車來並坐了囘家，行李等件，一齊交給了那兩箇翻譯。",
+      "pred": "concrete",
+      "prob_concrete": 0.5195326164,
+      "prob_abstract": 0.4804673836
+    },
+    {
+      "id": "A00074",
+      "sentence": "囘家之後，在樓下客廳裏坐了一囘，她看看他那一副常在微笑的形容，和柔和的聲氣， 忽而想起了兩年前的他來，心裏就感著了一種莫名其妙的親熱。",
+      "pred": "concrete",
+      "prob_concrete": 0.5267540898,
+      "prob_abstract": 0.4732459102
+    },
+    {
+      "id": "A00075",
+      "sentence": "她自到了呂督軍那裏以後，被復仇的心思所激動，接觸過的男人也不少了。",
+      "pred": "abstract",
+      "prob_concrete": 0.4227359256,
+      "prob_abstract": 0.5772640744
+    },
+    {
+      "id": "A00076",
+      "sentence": "但她覺得這些男人，都不過是肉做的機械。",
+      "pred": "abstract",
+      "prob_concrete": 0.4905023568,
+      "prob_abstract": 0.5094976432
+    },
+    {
+      "id": "A00077",
+      "sentence": "壓在身上，雖覺得有些重力，坐在對面，雖時時能講幾句無聊的套語，可是那一種熱烈動人的感情的電力。",
+      "pred": "abstract",
+      "prob_concrete": 0.4906428137,
+      "prob_abstract": 0.5093571863
+    },
+    {
+      "id": "A00078",
+      "sentence": "她却從來沒有感到過。",
+      "pred": "abstract",
+      "prob_concrete": 0.469897295,
+      "prob_abstract": 0.530102705
+    },
+    {
+      "id": "A00079",
+      "sentence": "現在她對了這一位洋服的清瘦的少年，不曉得如何，心裏只是不能平靜，好像有什麽物事，要從頭上吊下來的樣子。",
+      "pred": "abstract",
+      "prob_concrete": 0.4332256776,
+      "prob_abstract": 0.5667743224
+    },
+    {
+      "id": "A00080",
+      "sentence": "她和他同住在霞飛路的別宅，已經有半箇多月了。",
+      "pred": "abstract",
+      "prob_concrete": 0.4987355935,
+      "prob_abstract": 0.5012644065
+    },
+    {
+      "id": "A00081",
+      "sentence": "有一天，喫過了晚飯，她和他坐了汽車，去乘了一囘涼。",
+      "pred": "concrete",
+      "prob_concrete": 0.5486107085,
+      "prob_abstract": 0.4513892915
+    },
+    {
+      "id": "A00082",
+      "sentence": "在汽車裏，他捏着了她的火熱的手心，儘是幽幽的在訴說他在美國的生活狀態。",
+      "pred": "abstract",
+      "prob_concrete": 0.4210689098,
+      "prob_abstract": 0.5789310902
+    },
+    {
+      "id": "A00083",
+      "sentence": "她和他身體貼着在一塊，兩眼只是呆呆的向著前頭在暮色中沉淪下去的整潔修長的馬路，馬路兩旁黑影沈沈的列樹，和列樹中微有倦意的蟬聲凝視。",
+      "pred": "abstract",
+      "prob_concrete": 0.4516608601,
+      "prob_abstract": 0.5483391399
+    },
+    {
+      "id": "A00084",
+      "sentence": "她一邊像在半睡狀態裏似的聽着他的柔和的密語，一邊她好像赤了身體，在月下的庭園裏游步。",
+      "pred": "abstract",
+      "prob_concrete": 0.4905012798,
+      "prob_abstract": 0.5094987202
+    },
+    {
+      "id": "A00085",
+      "sentence": "是初秋的晚上，庭園的草花，都在爭最後的光榮，開滿了紅綠的雜花。",
+      "pred": "abstract",
+      "prob_concrete": 0.4839426765,
+      "prob_abstract": 0.5160573235
+    },
+    {
+      "id": "A00086",
+      "sentence": "庭園的中間有一 方池水，池水中間站着一個大理石刻的人魚，從她的臍裏在那裏潰出清涼的泉水來。",
+      "pred": "concrete",
+      "prob_concrete": 0.5188075914,
+      "prob_abstract": 0.4811924086
+    },
+    {
+      "id": "A00087",
+      "sentence": "月光灑滿了這園庭，遠處的樹林，頂上載着銀色的光華，林裏烘出濃厚的黑影，寂靜嚴肅的壓在那裏。",
+      "pred": "concrete",
+      "prob_concrete": 0.5005317085,
+      "prob_abstract": 0.4994682915
+    },
+    {
+      "id": "A00088",
+      "sentence": "潰水池的潰水，池裏的微波，都反射着皎潔的月色，在那裏蕩漾，她脚下的綠茵和近旁的花草也披了月光，柔軟無聲的在受她的踐踏。",
+      "pred": "concrete",
+      "prob_concrete": 0.5247479615,
+      "prob_abstract": 0.4752520385
+    },
+    {
+      "id": "A00089",
+      "sentence": "她只聽見了些很幽很幽的潰水聲音，而這淙淙的有韻律的聲響又似出於一箇跪在她脚旁，兩手捧着她的裸了的腰腿的十八九歲的美少年之口。",
+      "pred": "abstract",
+      "prob_concrete": 0.4996137031,
+      "prob_abstract": 0.5003862969
+    },
+    {
+      "id": "A00090",
+      "sentence": "她聽了他的訴說，嘴唇顫動了一下，朝轉頭來對緊坐在她邊上的他看了一眼，不知不覺就滾了兩顆眼淚下來。",
+      "pred": "concrete",
+      "prob_concrete": 0.5443904288,
+      "prob_abstract": 0.4556095712
+    },
+    {
+      "id": "A00091",
+      "sentence": "他在黑暗的車裏，看不出她的感情的流露，還是幽幽的在說。",
+      "pred": "concrete",
+      "prob_concrete": 0.5169517569,
+      "prob_abstract": 0.4830482431
+    },
+    {
+      "id": "A00092",
+      "sentence": "她就把手抽了一抽，俯向前去命汽車夫說：\n\n『打囘頭去，我們囘去罷！",
+      "pred": "concrete",
+      "prob_concrete": 0.5592789084,
+      "prob_abstract": 0.4407210916
+    },
+    {
+      "id": "A00093",
+      "sentence": "』\n\n\n\n囘到霞飛路的住宅，在二層樓的露臺上坐定之後，她的興奮，還是按納不下。",
+      "pred": "concrete",
+      "prob_concrete": 0.5112484102,
+      "prob_abstract": 0.4887515898
+    },
+    {
+      "id": "A00094",
+      "sentence": "時間已經晚了，外邊只是沈沈的黑影。",
+      "pred": "concrete",
+      "prob_concrete": 0.5466476633,
+      "prob_abstract": 0.4533523367
+    },
+    {
+      "id": "A00095",
+      "sentence": "明藍的天空裏，淡映着幾箇搖動的明星；",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00096",
+      "sentence": "一陣微 風吹了些樓下園裏的草花香味和隔壁西洋人家的比牙琴的斷響過來。",
+      "pred": "abstract",
+      "prob_concrete": 0.4185412084,
+      "prob_abstract": 0.5814587916
+    },
+    {
+      "id": "A00097",
+      "sentence": "他只是默默的坐在一張小椅上吸煙，有時看天空，有時也在偷看她。",
+      "pred": "abstract",
+      "prob_concrete": 0.481047095,
+      "prob_abstract": 0.518952905
+    },
+    {
+      "id": "A00098",
+      "sentence": "她也只默默的坐在籐椅上在那裏凝視灰黑的空處。",
+      "pred": "abstract",
+      "prob_concrete": 0.4894120404,
+      "prob_abstract": 0.5105879596
+    },
+    {
+      "id": "A00099",
+      "sentence": "停了一會，他把喫剩的香煙丟往了樓下，走上她的身邊，對她笑了一笑，指着天空的一條淡淡的星光說：\n\n『那是什麽？",
+      "pred": "concrete",
+      "prob_concrete": 0.5262442448,
+      "prob_abstract": 0.4737557552
+    },
+    {
+      "id": "A00100",
+      "sentence": "』\n\n\n\n『那是天河！",
+      "pred": "abstract",
+      "prob_concrete": 0.4561209042,
+      "prob_abstract": 0.5438790958
+    },
+    {
+      "id": "A00101",
+      "sentence": "』\n\n\n\n『七月七怕將到了罷？",
+      "pred": "concrete",
+      "prob_concrete": 0.50297582,
+      "prob_abstract": 0.49702418
+    },
+    {
+      "id": "A00102",
+      "sentence": "』\n\n\n\n她也含了微笑，站了起來。",
+      "pred": "concrete",
+      "prob_concrete": 0.5109636088,
+      "prob_abstract": 0.4890363912
+    },
+    {
+      "id": "A00103",
+      "sentence": "對他深深的看了一眼，她就走進屋裏去；",
+      "pred": "concrete",
+      "prob_concrete": 0.5166333397,
+      "prob_abstract": 0.4833666603
+    },
+    {
+      "id": "A00104",
+      "sentence": "一邊很柔和的說。",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    },
+    {
+      "id": "A00105",
+      "sentence": "『冰菓已經涼透了，還不來喫！",
+      "pred": "concrete",
+      "prob_concrete": 0.6342117647,
+      "prob_abstract": 0.3657882353
+    },
+    {
+      "id": "A00106",
+      "sentence": "』\n\n\n\n他就接緊的跟了她進去。",
+      "pred": "abstract",
+      "prob_concrete": 0.4868599282,
+      "prob_abstract": 0.5131400718
+    },
+    {
+      "id": "A00107",
+      "sentence": "她走到綠紗罩的電燈下的時候，站住了腳，囘頭來想看他一眼，說一句話的，接緊跟在她後面的他，突然因她站住了，就衝上了前，撲在她的身上，她的囘轉來的側面，也正衝在他的嘴上。",
+      "pred": "concrete",
+      "prob_concrete": 0.5363948962,
+      "prob_abstract": 0.4636051038
+    },
+    {
+      "id": "A00108",
+      "sentence": "他就伸出了左右兩手，把她緊緊的抱住了。",
+      "pred": "concrete",
+      "prob_concrete": 0.5218268196,
+      "prob_abstract": 0.4781731804
+    },
+    {
+      "id": "A00109",
+      "sentence": "她閉了眼睛，把身體 緊靠着他，嘴上只感着了一道熱味。",
+      "pred": "concrete",
+      "prob_concrete": 0.5231635323,
+      "prob_abstract": 0.4768364677
+    },
+    {
+      "id": "A00110",
+      "sentence": "她的身體正同入了溶化爐似的，把前後的知覺消失了的時候，他就鬆了一鬆手，拍的一響，把電燈滅黑了。",
+      "pred": "abstract",
+      "prob_concrete": 0.4223256985,
+      "prob_abstract": 0.5776743015
+    },
+    {
+      "id": "A00111",
+      "sentence": "* * *",
+      "pred": "abstract",
+      "prob_concrete": 0.4768891923,
+      "prob_abstract": 0.5231108077
+    }
+  ]
+}

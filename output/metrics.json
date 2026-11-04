@@ -1,0 +1,204 @@
+{
+  "dataset": {
+    "train_size": 640,
+    "test_size": 160,
+    "label_order": [
+      "concrete",
+      "abstract"
+    ],
+    "feature_coverage": {
+      "A_CountVectorizer_train": {
+        "rows_with_features": 183,
+        "rows_without_features": 457
+      },
+      "A_CountVectorizer_test": {
+        "rows_with_features": 4,
+        "rows_without_features": 156
+      },
+      "B_Word_TfidfVectorizer_train": {
+        "rows_with_features": 548,
+        "rows_without_features": 92
+      },
+      "B_Word_TfidfVectorizer_test": {
+        "rows_with_features": 7,
+        "rows_without_features": 153
+      },
+      "C_CharNgram_TfidfVectorizer_train": {
+        "rows_with_features": 639,
+        "rows_without_features": 1
+      },
+      "C_CharNgram_TfidfVectorizer_test": {
+        "rows_with_features": 159,
+        "rows_without_features": 1
+      }
+    }
+  },
+  "models": {
+    "A_CountVectorizer": {
+      "accuracy": 0.49375,
+      "confusion_matrix": [
+        [
+          1,
+          79
+        ],
+        [
+          2,
+          78
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "concrete",
+        "abstract"
+      ],
+      "classification_report": {
+        "concrete": {
+          "precision": 0.3333333333333333,
+          "recall": 0.0125,
+          "f1-score": 0.024096385542168676,
+          "support": 80.0
+        },
+        "abstract": {
+          "precision": 0.4968152866242038,
+          "recall": 0.975,
+          "f1-score": 0.6582278481012658,
+          "support": 80.0
+        },
+        "accuracy": 0.49375,
+        "macro avg": {
+          "precision": 0.4150743099787686,
+          "recall": 0.49374999999999997,
+          "f1-score": 0.3411621168217172,
+          "support": 160.0
+        },
+        "weighted avg": {
+          "precision": 0.4150743099787686,
+          "recall": 0.49375,
+          "f1-score": 0.34116211682171727,
+          "support": 160.0
+        }
+      }
+    },
+    "B_Word_TfidfVectorizer": {
+      "accuracy": 0.5125,
+      "confusion_matrix": [
+        [
+          80,
+          0
+        ],
+        [
+          78,
+          2
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "concrete",
+        "abstract"
+      ],
+      "classification_report": {
+        "concrete": {
+          "precision": 0.5063291139240507,
+          "recall": 1.0,
+          "f1-score": 0.6722689075630253,
+          "support": 80.0
+        },
+        "abstract": {
+          "precision": 1.0,
+          "recall": 0.025,
+          "f1-score": 0.04878048780487805,
+          "support": 80.0
+        },
+        "accuracy": 0.5125,
+        "macro avg": {
+          "precision": 0.7531645569620253,
+          "recall": 0.5125,
+          "f1-score": 0.3605246976839517,
+          "support": 160.0
+        },
+        "weighted avg": {
+          "precision": 0.7531645569620253,
+          "recall": 0.5125,
+          "f1-score": 0.3605246976839517,
+          "support": 160.0
+        }
+      }
+    },
+    "C_CharNgram_TfidfVectorizer": {
+      "accuracy": 0.75625,
+      "confusion_matrix": [
+        [
+          58,
+          22
+        ],
+        [
+          17,
+          63
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "concrete",
+        "abstract"
+      ],
+      "classification_report": {
+        "concrete": {
+          "precision": 0.7733333333333333,
+          "recall": 0.725,
+          "f1-score": 0.7483870967741936,
+          "support": 80.0
+        },
+        "abstract": {
+          "precision": 0.7411764705882353,
+          "recall": 0.7875,
+          "f1-score": 0.7636363636363637,
+          "support": 80.0
+        },
+        "accuracy": 0.75625,
+        "macro avg": {
+          "precision": 0.7572549019607844,
+          "recall": 0.75625,
+          "f1-score": 0.7560117302052787,
+          "support": 160.0
+        },
+        "weighted avg": {
+          "precision": 0.7572549019607843,
+          "recall": 0.75625,
+          "f1-score": 0.7560117302052787,
+          "support": 160.0
+        }
+      }
+    }
+  },
+  "selection": "C_CharNgram_TfidfVectorizer",
+  "model_settings": {
+    "A_CountVectorizer": {
+      "vectorizer": "CountVectorizer",
+      "max_features": 200,
+      "classifier": "LogisticRegression",
+      "max_iter": 1000,
+      "random_state": 42
+    },
+    "B_Word_TfidfVectorizer": {
+      "vectorizer": "TfidfVectorizer",
+      "max_features": 2000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "classifier": "LogisticRegression",
+      "max_iter": 1000,
+      "random_state": 42
+    },
+    "C_CharNgram_TfidfVectorizer": {
+      "vectorizer": "TfidfVectorizer",
+      "analyzer": "char",
+      "ngram_range": [
+        2,
+        5
+      ],
+      "max_features": 10000,
+      "classifier": "LogisticRegression",
+      "max_iter": 1000,
+      "random_state": 42
+    }
+  },
+  "notes": "C 使用字元級 TF-IDF n-gram (2,5)，不依賴中文分詞器；繁體/簡體字形依原文保留。"
+}

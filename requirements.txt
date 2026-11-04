@@ -1,0 +1,4 @@
+pandas
+scikit-learn
+joblib
+reportlab>=4.0,<6
