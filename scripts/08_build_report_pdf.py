@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from reportlab.lib.enums import TA_JUSTIFY
+from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import cm
@@ -32,7 +32,7 @@ BODY = ParagraphStyle(
     fontName=FONT_REGULAR,
     fontSize=10.5,
     leading=17,
-    alignment=TA_JUSTIFY,
+    alignment=TA_LEFT,
     spaceAfter=7,
     firstLineIndent=0,
 )
